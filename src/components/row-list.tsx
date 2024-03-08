@@ -1,26 +1,35 @@
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+import SkeletonCard from "./cards/skeleton-card";
 
 interface RowListProps<T> {
-  items: T[];
+  items: T[] | undefined;
   render: (item: T) => React.ReactNode;
-  title: string;
+  isLoading?: boolean;
 }
 
 function RowList<T extends { id: number }>({
   items,
   render,
-  title,
+  isLoading,
 }: RowListProps<T>) {
   return (
     <>
-      <h2 className="text-2xl font-bold mb-4">{title}</h2>
       <SideScrollList>
-        {items.map((item) => (
-          <li key={item.id} className="flex-shrink-0 w-48 max-md:snap-center">
-            {render(item)}
-          </li>
-        ))}
+        {isLoading
+          ? new Array(10)
+              .fill(0)
+              .map((_, i) => (
+                <SkeletonCard key={i} className="flex-shrink-0 w-48" />
+              ))
+          : items?.map((item) => (
+              <li
+                key={item.id}
+                className="flex-shrink-0 w-48 max-md:snap-center"
+              >
+                {render(item)}
+              </li>
+            ))}
       </SideScrollList>
     </>
   );

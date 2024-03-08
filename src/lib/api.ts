@@ -11,7 +11,7 @@ import {
 async function apiWrapper<T>(params: string): Promise<T> {
   return fetch("https://api.themoviedb.org/3" + params, {
     headers: {
-      Authorization: `Bearer ${import.meta.env.VITE_API_KEY as string}`,
+      Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN as string}`,
     },
   }).then((res) => res.json());
 }

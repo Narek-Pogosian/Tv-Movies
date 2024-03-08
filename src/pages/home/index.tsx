@@ -1,5 +1,11 @@
+import TrendingMovies from "./components/trending-movies";
+
 function HomePage() {
-  return <div>HomePage</div>;
+  return (
+    <>
+      <TrendingMovies />
+    </>
+  );
 }
 
 export default HomePage;

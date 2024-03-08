@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 interface CardProps extends React.ComponentPropsWithoutRef<"div"> {}
 
 function Card({ children, ...rest }: CardProps) {
@@ -22,14 +24,12 @@ function CardImage({
 }) {
   // TODO: Add a placeholder image
   return (
-    <Link href={href} className="relative aspect-[3/4] block">
+    <Link to={href} className="relative aspect-[3/4] block">
       <img
         src={"https://image.tmdb.org/t/p/w500" + image}
         alt={title}
-        width={300}
-        height={400}
         loading="lazy"
-        className="rounded"
+        className="rounded aspect-[3/4] object-cover w-full h-full"
       />
     </Link>
   );
@@ -45,7 +45,7 @@ function CardInfo({ children }: { children: React.ReactNode }) {
 
 function CardTitle({ title, href }: { title: string; href: string }) {
   return (
-    <Link href={href} className="mb-0.5 truncate" title={title}>
+    <Link to={href} className="mb-0.5 truncate" title={title}>
       {title}
     </Link>
   );
