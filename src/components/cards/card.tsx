@@ -45,7 +45,7 @@ function CardInfo({ children }: { children: React.ReactNode }) {
 
 function CardTitle({ title, href }: { title: string; href: string }) {
   return (
-    <Link to={href} className="mb-0.5 truncate" title={title}>
+    <Link to={href} className=" truncate" title={title}>
       {title}
     </Link>
   );
@@ -59,7 +59,7 @@ function CardSubInfo({
   releaseDate: string;
 }) {
   return (
-    <div className="mt-auto flex justify-between items-center">
+    <div className="flex justify-between items-center">
       <span>
         <span className="mr-1.5 text-amber-500 text-lg">&#9733;</span>
         <span>{rating.toFixed(1)}</span>
