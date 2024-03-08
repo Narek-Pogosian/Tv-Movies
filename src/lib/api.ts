@@ -55,6 +55,7 @@ export function getSearchResults(query: string) {
   );
 }
 
+// ***** GENRES *****
 export function getGenres(mediaType: "tv" | "movie") {
   return apiWrapper(`/genre/${mediaType}/list?language=en-US`);
 }

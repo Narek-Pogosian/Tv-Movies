@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import ThemeToggle from "./theme-toggle";
 
 function Header() {
@@ -5,13 +6,13 @@ function Header() {
     <header>
       <div className="container flex justify-between items-center py-4">
         <nav className="flex gap-4 sm:gap-8 items-center">
-          <Link href="/" className="text-xl font-bold uppercase">
+          <Link to="/" className="text-xl font-bold uppercase">
             TV & Movies
           </Link>
           <ul className="flex gap-2 sm:gap-4">
             <li>
               <Link
-                href="/movie"
+                to="/movie"
                 className="font-semibold text-sm hover:underline hover:underline-offset-2"
               >
                 Movies
@@ -19,7 +20,7 @@ function Header() {
             </li>
             <li>
               <Link
-                href="/tv"
+                to="/tv"
                 className="font-semibold text-sm hover:underline hover:underline-offset-2"
               >
                 Tv
