@@ -9,7 +9,7 @@ const config = {
       center: true,
       padding: "1rem",
       screens: {
-        "2xl": "134 0px",
+        "2xl": "1340px",
       },
     },
     extend: {

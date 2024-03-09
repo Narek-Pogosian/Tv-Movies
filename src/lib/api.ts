@@ -1,6 +1,7 @@
 import {
   Movie,
   MovieDetails,
+  Person,
   Response,
   SearchResult,
   TimeWindow,
@@ -43,7 +44,7 @@ export function getTvDetails(id = "") {
 }
 
 export function getPersonDetails(id = "") {
-  return apiWrapper(
+  return apiWrapper<Person>(
     `/person/${id}?append_to_response=external_ids,combined_credits`
   );
 }

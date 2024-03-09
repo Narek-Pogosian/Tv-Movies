@@ -136,6 +136,7 @@ export interface MovieCrew {
  * ****** PERSON ******
  */
 export interface Person {
+  id: number;
   biography: string;
   birthday: string;
   known_for_department: string;

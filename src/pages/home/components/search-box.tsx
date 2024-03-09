@@ -63,7 +63,7 @@ function ComboBoxListItem({ item }: { item: SearchResult }) {
       key={item.id}
       value={item}
       className={({ active }) =>
-        `flex items-center justify-between max-w-full gap-2 px-4 h-16 ${
+        `flex items-center justify-between max-w-full gap-2 cursor-pointer px-4 h-16 ${
           active ? "bg-black/5 dark:bg-white/5" : ""
         }`
       }
