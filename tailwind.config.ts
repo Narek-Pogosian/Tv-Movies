@@ -20,6 +20,7 @@ const config = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
+        scrollbar: "hsl(var(--scrollbar))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
@@ -68,7 +69,8 @@ const config = {
       },
     },
   },
-  // plugins: [require("tailwindcss-animate")],
+
+  plugins: [require("tailwind-scrollbar")],
 } satisfies Config;
 
 export default config;

@@ -66,7 +66,7 @@ function SideScrollList({ children }: { children: React.ReactNode }) {
   return (
     <ScrollListContainer>
       <ul
-        className="gap-5 flex pb-2 overflow-x-scroll max-md:snap-x"
+        className="gap-5 flex pb-2 overflow-x-scroll max-md:snap-x scrollbar"
         onScroll={(e) => handleScroll(e)}
       >
         <div
