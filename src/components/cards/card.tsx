@@ -24,12 +24,12 @@ function CardImage({
 }) {
   // TODO: Add a placeholder image
   return (
-    <Link to={href} className="relative aspect-[3/4] block">
+    <Link to={href} className="relative aspect-[3/4.5] block">
       <img
         src={"https://image.tmdb.org/t/p/w500" + image}
         alt={title}
         loading="lazy"
-        className="rounded aspect-[3/4] object-cover w-full h-full"
+        className="rounded aspect-[3/4.5] object-cover w-full h-full"
       />
     </Link>
   );
@@ -45,7 +45,7 @@ function CardInfo({ children }: { children: React.ReactNode }) {
 
 function CardTitle({ title, href }: { title: string; href: string }) {
   return (
-    <Link to={href} className=" truncate" title={title}>
+    <Link to={href} className="truncate" title={title}>
       {title}
     </Link>
   );

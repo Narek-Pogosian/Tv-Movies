@@ -4,36 +4,29 @@ import { getTrendingMovies } from "@/lib/api";
 import { TimeWindow } from "@/lib/types";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import TrendingToggle from "./trending-toggle";
 
 function TrendingMovies() {
   const [timeWindow, setTimeWindow] = useState<TimeWindow>("day");
 
-  const { data, error, isLoading } = useQuery({
+  const { data, isError, isLoading } = useQuery({
     queryKey: ["trending-movies" + timeWindow],
     queryFn: () => getTrendingMovies(timeWindow),
     refetchOnWindowFocus: true,
   });
 
-  if (error) {
-    return <div>Error</div>;
-  }
-
-  // TODO: Better error message
-
   return (
-    <>
-      <h2>Trending Movies</h2>
-      <div>
-        <button onClick={() => setTimeWindow("day")}>Today</button>
-        <button onClick={() => setTimeWindow("week")}>This Week</button>
-      </div>
+    <section>
+      <h2>Trending</h2>
+      <TrendingToggle timeWindow={timeWindow} setTimeWindow={setTimeWindow} />
       <RowList
         key={timeWindow}
         items={data?.results}
         isLoading={isLoading}
+        isError={isError}
         render={(movie) => <MovieCard movie={movie} />}
       />
-    </>
+    </section>
   );
 }
 
