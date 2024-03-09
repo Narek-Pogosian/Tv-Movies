@@ -7,7 +7,7 @@ function SkeletonCard({ ...props }: SkeletonCardProps) {
     <div {...props}>
       <Skeleton className="w-full aspect-[3/4.5]" />
       <div className="py-2">
-        <Skeleton className="w-3/4 h-4 mb-2" />
+        <Skeleton className="h-4 mb-2" />
         <div className="flex gap-2">
           <Skeleton className="w-1/2 h-4" />
           <Skeleton className="w-3/4 h-4" />
