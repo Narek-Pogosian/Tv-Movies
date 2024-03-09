@@ -54,7 +54,7 @@
     --border: 240 10% 15.9%;
     --input: 240 10% 15.9%;
     --ring: 240 4.9% 83.9%;
-    --scrollbar: 240 5% 18%;
+    --scrollbar: 240 12% 18%;
   }
 }
 
@@ -77,6 +77,12 @@
 
   h2 {
     @apply text-xl lg:text-2xl font-bold mb-2;
+  }
+}
+
+@layer components {
+  .primary-gradient {
+    @apply bg-gradient-to-r from-rose-500 to-amber-500;
   }
 }
 

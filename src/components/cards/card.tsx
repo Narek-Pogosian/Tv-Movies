@@ -1,3 +1,4 @@
+import { Star } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface CardProps extends React.ComponentPropsWithoutRef<"div"> {}
@@ -37,7 +38,7 @@ function CardImage({
 
 function CardInfo({ children }: { children: React.ReactNode }) {
   return (
-    <div className="px-1 pt-2 flex flex-col font-semibold text-sm">
+    <div className="px-1 pt-1 flex flex-col font-semibold text-sm">
       {children}
     </div>
   );
@@ -45,7 +46,7 @@ function CardInfo({ children }: { children: React.ReactNode }) {
 
 function CardTitle({ title, href }: { title: string; href: string }) {
   return (
-    <Link to={href} className="truncate" title={title}>
+    <Link to={href} className="truncate mb-1" title={title}>
       {title}
     </Link>
   );
@@ -60,12 +61,12 @@ function CardSubInfo({
 }) {
   return (
     <div className="flex justify-between items-center">
-      <span>
-        <span className="mr-1.5 text-amber-500 text-lg">&#9733;</span>
+      <span className="flex items-center gap-1">
+        <Star className="size-4 text-amber-500 fill-current" />
         <span>{rating.toFixed(1)}</span>
       </span>
       <span className="text-muted-foreground">
-        {new Date(releaseDate).toLocaleDateString()}
+        {new Date(releaseDate).getFullYear()}
       </span>
     </div>
   );

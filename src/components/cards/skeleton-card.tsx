@@ -6,11 +6,11 @@ function SkeletonCard({ ...props }: SkeletonCardProps) {
   return (
     <div {...props}>
       <Skeleton className="w-full aspect-[3/4.5]" />
-      <div className="py-2">
-        <Skeleton className="h-4 mb-2" />
-        <div className="flex gap-2">
-          <Skeleton className="w-1/2 h-4" />
-          <Skeleton className="w-3/4 h-4" />
+      <div className="py-1">
+        <Skeleton className="h-4 mt-0.5 mb-1.5" />
+        <div className="flex justify-between">
+          <Skeleton className="w-12 h-4" />
+          <Skeleton className="w-12 h-4" />
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@ const TrendingToggle = ({ timeWindow, setTimeWindow }: Props) => {
     <div className="relative inline-block py-[2px] mb-2 rounded-full bg-transparent">
       <div
         className={
-          "absolute top-0 h-full rounded-full bg-indigo-600 transition-transform left-0 duration-300 " +
+          "absolute top-0 h-full rounded-full primary-gradient transition-transform left-0 duration-300 " +
           `${
             timeWindow === "week"
               ? "translate-x-[81.5px] w-[101.5px]"

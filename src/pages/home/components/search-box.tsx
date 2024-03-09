@@ -20,6 +20,7 @@ const SearchBox = () => {
   });
 
   const navigate = useNavigate();
+  // TODO: Fix click outside issue.
   const handleSelect = (value: SearchResult) => {
     navigate(`/${value.media_type}/${value.id}`);
   };
@@ -35,7 +36,10 @@ const SearchBox = () => {
         onChange={(event) => setQuery(event.target.value)}
       />
       {query.trim() && (results || isLoading) && (
-        <Combobox.Options className="absolute w-full overflow-y-scroll border shadow-md dark:shadow-lg -translate-x-1/2 rounded-lg max-h-80 sm:left-0 sm:translate-x-0 left-1/2 scrollbar-thin bg-element top-14 space-y-1">
+        <Combobox.Options
+          className="absolute w-full overflow-y-auto border shadow-md dark:shadow-lg -translate-x-1/2 rounded-lg max-h-80 sm:left-0 sm:translate-x-0 left-1/2 scrollbar-thin bg-element top-14 space-y-1"
+          hold={false}
+        >
           {isLoading ? (
             <ComboBoxLoading />
           ) : results?.length ? (

@@ -30,19 +30,19 @@ export function getTvShows(query: string) {
 }
 
 // ***** DETAILS *****
-export function getMovieDetails(id: string) {
+export function getMovieDetails(id = "") {
   return apiWrapper<MovieDetails>(
     `/movie/${id}?append_to_response=credits,videos,images`
   );
 }
 
-export function getTvDetails(id: string) {
+export function getTvDetails(id = "") {
   return apiWrapper<TvDetails>(
     `/tv/${id}?append_to_response=credits,videos,images`
   );
 }
 
-export function getPersonDetails(id: string) {
+export function getPersonDetails(id = "") {
   return apiWrapper(
     `/person/${id}?append_to_response=external_ids,combined_credits`
   );

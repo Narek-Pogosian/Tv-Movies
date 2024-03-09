@@ -9,12 +9,12 @@ function TvCard({ tvShow }: TvCardProps) {
   return (
     <Card>
       <Card.Image
-        href={`/movie/${tvShow.id}`}
+        href={`/tv/${tvShow.id}`}
         image={tvShow.poster_path}
         title={tvShow.name}
       />
       <Card.Info>
-        <Card.Title href={`/movie/${tvShow.id}`} title={tvShow.name} />
+        <Card.Title href={`/tv/${tvShow.id}`} title={tvShow.name} />
         <Card.SubInfo
           rating={tvShow.vote_average}
           releaseDate={tvShow.first_air_date}
