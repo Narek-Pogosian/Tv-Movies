@@ -1,4 +1,6 @@
+import { Button } from "@/components/ui/button";
 import { Genre, MovieCrew, Video } from "@/lib/types";
+import { Star } from "lucide-react";
 import { Link } from "react-router-dom";
 
 type Props = {
@@ -26,8 +28,16 @@ const DetailsInfo = ({
   vote,
   voteCount,
 }: Props) => {
+  const voteText = `${vote.toFixed(1)} / ${voteCount} ${
+    voteCount === 1 ? "Vote" : "Votes"
+  }`;
+
+  const feauturedCrew = crew
+    .sort((a, b) => b.popularity - a.popularity)
+    .slice(0, 3);
+
   return (
-    <div className="flex flex-col gap-6 md:gap-10 lg:gap-20 md:pt-10 md:flex-row pb-14">
+    <DetailsInfoContainer>
       {poster ? (
         <img
           src={`https://image.tmdb.org/t/p/w500/${poster}`}
@@ -56,54 +66,56 @@ const DetailsInfo = ({
       )}
 
       <div>
-        <h1 className="text-3xl font-semibold mb-2">{title}</h1>
-        <div className="space-x-2 text-sm mb-4 divide-x-[1px] divide-muted-foreground text-muted-foreground">
-          <span>
-            <span className="mr-1 text-base text-secondary">&#9733;</span>
-            <span>
-              {`${vote.toFixed(1)} / ${voteCount} ${
-                voteCount === 1 ? "Vote" : "Votes"
-              }`}
-            </span>
+        <h1>{title}</h1>
+        <div className="flex gap-2 flex-wrap text-muted-foreground font-semibold text-sm mb-4">
+          <span className="flex gap-1 items-center">
+            <Star className="size-4 text-amber-500 fill-current" />
+            {voteText}
           </span>
-          <span className="pl-1">
-            {" "}
-            {new Date(release).toLocaleDateString()}
-          </span>
-          <span className="pl-1">
-            {" "}
-            {genres.map((genre) => genre.name).join(", ")}{" "}
-          </span>
+          <span>•</span>
+          <span>{new Date(release).toLocaleDateString()}</span>
+          <span>•</span>
+          <span>{genres.map((genre) => genre.name).join(", ")} </span>
         </div>
 
-        <p className="max-w-2xl mb-4 text-sm leading-6 md:mb-8 text-balance">
+        <p className="max-w-3xl mb-2 text-sm leading-6 md:mb-4 text-balance">
           {overview}
         </p>
 
         <div className="mb-8">
           <h3 className="mb-2 font-semibold">Featured Crew</h3>
-          <div className="flex flex-wrap gap-6">
-            {crew
-              .sort((a, b) => b.popularity - a.popularity)
-              .slice(0, 3)
-              .map((person, i) => (
-                <div className="text-sm" key={i}>
-                  <Link
-                    to={`/person/${person.id}`}
-                    className="block hover:underline"
-                  >
-                    {person.name}
-                  </Link>
-                  <span className="text-xs text-neutral-400">{person.job}</span>
-                </div>
-              ))}
-          </div>
+          <ul className="flex flex-wrap gap-6">
+            {feauturedCrew.map((person, i) => (
+              <li className="text-sm" key={i}>
+                <Link
+                  to={`/person/${person.id}`}
+                  className="block hover:underline"
+                >
+                  {person.name}
+                </Link>
+                <span className="text-xs text-neutral-400">{person.job}</span>
+              </li>
+            ))}
+          </ul>
         </div>
 
+        <Button variant="gradient">Watch Trailer</Button>
         {/* {trailer && <TrailerModal trailer={trailer} />} */}
       </div>
-    </div>
+    </DetailsInfoContainer>
   );
 };
 
 export default DetailsInfo;
+
+export function DetailsInfoContainer({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="flex flex-col gap-6 md:gap-10 lg:gap-20 md:pt-10 md:flex-row pb-14">
+      {children}
+    </div>
+  );
+}

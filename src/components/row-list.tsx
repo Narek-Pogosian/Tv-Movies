@@ -1,12 +1,14 @@
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import SkeletonCard from "./cards/skeleton-card";
+import { Skeleton } from "./ui/skeleton";
 
 interface RowListProps<T> {
   items: T[] | undefined;
   render: (item: T) => React.ReactNode;
   isLoading?: boolean;
   isError?: boolean;
+  title?: string;
 }
 
 function RowList<T extends { id: number }>({
@@ -14,31 +16,43 @@ function RowList<T extends { id: number }>({
   render,
   isLoading,
   isError,
+  title,
 }: RowListProps<T>) {
   if (isLoading) {
     return (
-      <SideScrollList>
-        {new Array(10).fill(0).map((_, i) => (
-          <SkeletonCard key={i} className="flex-shrink-0 w-48" />
-        ))}
-      </SideScrollList>
+      <>
+        {title && <Skeleton className="h-8 mb-2 w-36" />}
+        <SideScrollList>
+          {new Array(10).fill(0).map((_, i) => (
+            <SkeletonCard key={i} className="flex-shrink-0 w-48" />
+          ))}
+        </SideScrollList>
+      </>
     );
   }
 
   if (isError) {
     return (
-      <ScrollListContainer>TODO: Nicer error message/image</ScrollListContainer>
+      <>
+        {title && <h2>{title}</h2>}
+        <ScrollListContainer>
+          TODO: Nicer error message/image
+        </ScrollListContainer>
+      </>
     );
   }
 
   return (
-    <SideScrollList>
-      {items?.map((item) => (
-        <li key={item.id} className="flex-shrink-0 w-48 max-md:snap-center">
-          {render(item)}
-        </li>
-      ))}
-    </SideScrollList>
+    <>
+      {title && <h2>{title}</h2>}
+      <SideScrollList>
+        {items?.map((item) => (
+          <li key={item.id} className="flex-shrink-0 w-48 max-md:snap-center">
+            {render(item)}
+          </li>
+        ))}
+      </SideScrollList>
+    </>
   );
 }
 
