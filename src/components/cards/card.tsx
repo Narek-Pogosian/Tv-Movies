@@ -19,7 +19,7 @@ function CardImage({
   title,
   href,
 }: {
-  image: string;
+  image?: string;
   title: string;
   href: string;
 }) {
