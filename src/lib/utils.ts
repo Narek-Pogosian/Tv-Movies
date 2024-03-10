@@ -5,12 +5,6 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-/**
- *
- * @param items Array of items with popularity and poster_path
- * @param minimumPopularity Will filter out any items with popularity below, default is 2
- * @returns Sorted and filtered array of items
- */
 export function sortAndFilterByPopularity<
   T extends { poster_path: string; popularity: number }
 >(items: T[], minimumPopularity: number = 5): T[] {
@@ -19,6 +13,19 @@ export function sortAndFilterByPopularity<
       (item) => item.poster_path !== null && item.popularity > minimumPopularity
     )
     .sort((a, b) => b.popularity - a.popularity);
+}
+
+export function sortAndFilterByVoteAverage<
+  T extends { poster_path: string; vote_average: number; vote_count: number }
+>(items: T[], minimumVoteAverage: number = 2): T[] {
+  return items
+    .filter(
+      (item) =>
+        item.poster_path !== null &&
+        item.vote_average > minimumVoteAverage &&
+        item.vote_count > 50
+    )
+    .sort((a, b) => b.vote_average - a.vote_average);
 }
 
 export function objectToParamsString(params: Record<string, string>) {

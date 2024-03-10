@@ -2,7 +2,7 @@ import { useScrollTop } from "@/hooks/use-scroll-top";
 import { getPersonDetails } from "@/lib/api";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { sortAndFilterByPopularity } from "@/lib/utils";
+import { sortAndFilterByVoteAverage } from "@/lib/utils";
 import ErrorPage from "../components/error-page";
 import RowList from "@/components/row-list";
 import Card from "@/components/cards/card";
@@ -28,7 +28,7 @@ function PersonDetails() {
 
       return {
         ...data,
-        credits: sortAndFilterByPopularity(selectedCredits, 10)
+        credits: sortAndFilterByVoteAverage(selectedCredits)
           .filter(
             // Remove Duplicates
             (value, index, array) =>
