@@ -68,7 +68,7 @@ function CardSubInfo({
     <div className="flex justify-between items-center">
       <span className="flex items-center gap-1">
         <Star className="size-4 text-amber-500 fill-current" />
-        <span>{rating.toFixed(1)}</span>
+        <span>{(isNaN(rating) ? 0 : rating).toFixed(1)}</span>
       </span>
       <span className="text-muted-foreground">
         {new Date(releaseDate).getFullYear()}

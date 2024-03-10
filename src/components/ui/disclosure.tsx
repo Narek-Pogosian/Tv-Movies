@@ -28,7 +28,7 @@ function MyDisclosure({ buttonText, children, openByDefault }: Props) {
               />
             </svg>
           </Disclosure.Button>
-          <Disclosure.Panel className="p-4 border border-t-transparent bg-element">
+          <Disclosure.Panel className="px-4 pb-4 border border-t-transparent bg-element">
             {children}
           </Disclosure.Panel>
         </>

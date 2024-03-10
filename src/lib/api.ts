@@ -23,7 +23,7 @@ export function getTrendingMovies(timeWindow: TimeWindow) {
 
 // ***** DISCOVER *****
 export function getMovies(query: string) {
-  const b = query.includes("vote_count.gte") ? "" : "&vote_count.gte=10";
+  const b = query.includes("vote_count.gte") ? "" : "&vote_count.gte=20";
 
   return apiWrapper<Response<Movie>>(
     `/discover/movie?${query}&language=en-US${b}`
@@ -31,7 +31,7 @@ export function getMovies(query: string) {
 }
 
 export function getTvShows(query: string) {
-  const b = query.includes("vote_count.gte") ? "" : "&vote_count.gte=10";
+  const b = query.includes("vote_count.gte") ? "" : "&vote_count.gte=20";
 
   return apiWrapper<Response<TvShow>>(
     `/discover/tv?${query}&language=en-US${b}`

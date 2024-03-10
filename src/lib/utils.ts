@@ -37,7 +37,11 @@ export function setSearchQueries(
     if (!value) {
       searchParams.delete(key);
     } else if (Array.isArray(value)) {
-      searchParams.set(key, value.join(","));
+      if (value.length === 0) {
+        searchParams.delete(key);
+      } else {
+        searchParams.set(key, value.join(","));
+      }
     } else {
       searchParams.set(key, value.toString());
     }
