@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
 import { Genre, MovieCrew, Video } from "@/lib/types";
 import { Star } from "lucide-react";
 import { Link } from "react-router-dom";
+import TrailerModal from "./trailer-modal";
 
 type Props = {
   poster: string;
@@ -24,7 +24,7 @@ const DetailsInfo = ({
   overview,
   release,
   title,
-  // trailer,
+  trailer,
   vote,
   voteCount,
 }: Props) => {
@@ -99,8 +99,7 @@ const DetailsInfo = ({
           </ul>
         </div>
 
-        <Button variant="gradient">Watch Trailer</Button>
-        {/* {trailer && <TrailerModal trailer={trailer} />} */}
+        {trailer && <TrailerModal trailer={trailer} />}
       </div>
     </DetailsInfoContainer>
   );

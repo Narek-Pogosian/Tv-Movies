@@ -21,7 +21,7 @@ function RowList<T extends { id: number }>({
   if (isLoading) {
     return (
       <>
-        {title && <Skeleton className="h-8 mb-2 w-36" />}
+        {title && <Skeleton className="lg:h-8 h-7 mb-2 w-36" />}
         <SideScrollList>
           {new Array(10).fill(0).map((_, i) => (
             <SkeletonCard key={i} className="flex-shrink-0 w-48" />
