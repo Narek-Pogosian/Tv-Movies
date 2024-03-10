@@ -6,10 +6,11 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from "./components/loader";
 
 function Movies() {
-  const { result, isLoading, fetchNextPage, hasNextPage } = useGetInfinite({
-    queryKey: "movies",
-    queryFn: getMovies,
-  });
+  const { result, isLoading, isError, fetchNextPage, hasNextPage } =
+    useGetInfinite({
+      queryKey: "movies",
+      queryFn: getMovies,
+    });
 
   return (
     <DiscoverLayout>
@@ -18,14 +19,26 @@ function Movies() {
       ) : (
         result && (
           <InfiniteScroll
-            dataLength={result.length}
             next={fetchNextPage}
+            dataLength={result.length}
             hasMore={hasNextPage}
-            loader={<Loader />}
+            loader={!isError && <Loader />}
+            endMessage={
+              result.length > 20 && (
+                <p className="py-6 font-semibold text-center">
+                  Yay! You have seen it all
+                </p>
+              )
+            }
           >
             <MoviesList movies={result} />
           </InfiniteScroll>
         )
+      )}
+      {isError && (
+        <p className="text-lg text-muted-foreground text-center py-4">
+          Something went wrong. Please try again later.
+        </p>
       )}
     </DiscoverLayout>
   );
