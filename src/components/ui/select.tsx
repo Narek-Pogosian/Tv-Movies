@@ -18,7 +18,7 @@ export function SelectButton({
   return (
     <Listbox.Button
       id={id}
-      className="relative w-full cursor-pointer rounded-lg dark:bg-white/5 bg-slate-400/5 py-2 pl-3 pr-10 text-left "
+      className="relative w-full cursor-pointer text-sm font-semibold rounded-lg dark:bg-white/5 bg-slate-400/5 py-2 pl-3 pr-10 text-left "
     >
       <span className="block truncate">{children}</span>
       <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">

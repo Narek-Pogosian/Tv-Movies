@@ -28,7 +28,7 @@ const ScrollTopButton = () => {
           variant="gradient"
           size="icon"
           onClick={scrollToTop}
-          className="fixed bottom-2 left-2 rounded-full z-50"
+          className="fixed w-14 h-14 bottom-2 left-2 max-xl:md:left-1/2 max-xl:md:-translate-x-1/2 xl:hidden rounded-full z-50"
         >
           <ArrowBigUpDash />
         </Button>
