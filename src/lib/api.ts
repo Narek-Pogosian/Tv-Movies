@@ -23,11 +23,19 @@ export function getTrendingMovies(timeWindow: TimeWindow) {
 
 // ***** DISCOVER *****
 export function getMovies(query: string) {
-  return apiWrapper<Response<Movie>>(`/discover/movie?${query}&language=en-US`);
+  const b = query.includes("vote_count.gte") ? "" : "&vote_count.gte=10";
+
+  return apiWrapper<Response<Movie>>(
+    `/discover/movie?${query}&language=en-US${b}`
+  );
 }
 
 export function getTvShows(query: string) {
-  return apiWrapper<Response<TvShow>>(`/discover/tv?${query}&language=en-US`);
+  const b = query.includes("vote_count.gte") ? "" : "&vote_count.gte=10";
+
+  return apiWrapper<Response<TvShow>>(
+    `/discover/tv?${query}&language=en-US${b}`
+  );
 }
 
 // ***** DETAILS *****

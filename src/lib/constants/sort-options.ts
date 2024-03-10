@@ -1,10 +1,7 @@
-export interface SortOptionType {
-  id: number;
-  text: string;
-  value: string;
-}
+export type SortOptionType = typeof sortOptions;
+export type SortValue = SortOptionType[number]["value"];
 
-export const sortOptions: SortOptionType[] = [
+export const sortOptions = [
   {
     id: 0,
     text: "Popularity Descending",
@@ -35,4 +32,4 @@ export const sortOptions: SortOptionType[] = [
     text: "Release Date Ascending",
     value: "release_date.asc",
   },
-];
+] as const;

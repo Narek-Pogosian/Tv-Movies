@@ -28,36 +28,20 @@ export function sortAndFilterByVoteAverage<
     .sort((a, b) => b.vote_average - a.vote_average);
 }
 
-export function objectToParamsString(params: Record<string, string>) {
-  return Object.entries(params)
-    .map(([key, value]) => `${key}=${value}`)
-    .join("&");
-}
-
-export function setSearchQueries(values: Record<string, string>) {
-  const searchParams = new URLSearchParams(window.location.search);
-  searchParams.delete("page");
+export function setSearchQueries(
+  values: Record<string, null | string | number | Array<number>>
+) {
+  const searchParams = new URLSearchParams();
 
   Object.entries(values).forEach(([key, value]) => {
-    if (value) {
-      searchParams.set(key, value);
-    } else {
+    if (!value) {
       searchParams.delete(key);
+    } else if (Array.isArray(value)) {
+      searchParams.set(key, value.join(","));
+    } else {
+      searchParams.set(key, value.toString());
     }
   });
-
-  return `${window.location.pathname}?${searchParams.toString()}`;
-}
-
-export function setPage(page: number) {
-  const searchParams = new URLSearchParams(window.location.search);
-
-  if (page <= 1) {
-    searchParams.delete("page");
-  }
-  if (page > 1) {
-    searchParams.set("page", page.toString());
-  }
 
   return `${window.location.pathname}?${searchParams.toString()}`;
 }

@@ -9,10 +9,6 @@ export interface Genre {
   name: string;
 }
 
-export interface GetGenreRespone {
-  genres: Genre[];
-}
-
 /**
  * ****** RESPONSE ******
  */
@@ -69,7 +65,7 @@ export interface TvShow extends MovieOrTv {
 export interface MovieDetails extends Omit<Movie, "genre_ids"> {
   credits: MovieCredits;
   budget: number;
-  genres: { id: number; name: string }[];
+  genres: Genre[];
   revenue: number;
   runtime: number;
   spoken_languages: { iso_639_1: string; name: string; english_name: string }[];
