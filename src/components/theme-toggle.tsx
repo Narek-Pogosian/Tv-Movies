@@ -12,6 +12,7 @@ function ThemeToggle() {
   return (
     <Button onClick={toggleTheme} variant="ghost" size="icon">
       {theme === "light" ? <Moon /> : <Sun />}
+      <span className="sr-only">Toggle theme</span>
     </Button>
   );
 }
