@@ -6,6 +6,7 @@ import RowList from "@/components/row-list";
 import PersonCard from "@/components/cards/person-card";
 import DetailsInfoSkeletonShell from "../components/details-info-skeleton-shell";
 import { useScrollTop } from "@/hooks/use-scroll-top";
+import ErrorPage from "../components/error-page";
 
 function MovieDetails() {
   useScrollTop();
@@ -25,7 +26,7 @@ function MovieDetails() {
   });
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return <ErrorPage />;
   }
 
   return (
