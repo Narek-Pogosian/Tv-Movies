@@ -6,6 +6,8 @@ import NotFound from "./pages/not-found";
 import MovieDetails from "./pages/(details)/movie";
 import TvShowDetails from "./pages/(details)/tv";
 import PersonDetails from "./pages/(details)/person";
+import Movies from "./pages/(discover)/movie";
+import TvShows from "./pages/(discover)/tv";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
       <main className="flex-1 container py-2">
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/movie" element={<Movies />} />
+          <Route path="/tv" element={<TvShows />} />
           <Route path="/movie/:id" element={<MovieDetails />} />
           <Route path="/tv/:id" element={<TvShowDetails />} />
           <Route path="/person/:id" element={<PersonDetails />} />

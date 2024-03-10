@@ -8,6 +8,7 @@ interface RowListProps<T> {
   render: (item: T) => React.ReactNode;
   isLoading?: boolean;
   isError?: boolean;
+  isPerson?: boolean;
   title?: string;
 }
 
@@ -17,6 +18,7 @@ function RowList<T extends { id: number }>({
   isLoading,
   isError,
   title,
+  isPerson,
 }: RowListProps<T>) {
   if (isLoading) {
     return (
@@ -24,7 +26,11 @@ function RowList<T extends { id: number }>({
         {title && <Skeleton className="lg:h-8 h-7 mb-2 w-36" />}
         <SideScrollList>
           {new Array(10).fill(0).map((_, i) => (
-            <SkeletonCard key={i} className="flex-shrink-0 w-48" />
+            <SkeletonCard
+              key={i}
+              className="flex-shrink-0 w-48"
+              isPerson={isPerson}
+            />
           ))}
         </SideScrollList>
       </>

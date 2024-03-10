@@ -56,6 +56,7 @@ function MovieDetails() {
           .slice(0, 15)}
         isLoading={isLoading}
         isError={!!error}
+        isPerson
         render={(person) => (
           <PersonCard
             id={person.id}
