@@ -16,15 +16,15 @@ export function useGetInfinite<T>({
   const [searchParams] = useSearchParams();
   const queryString = searchParams.toString();
 
-  const { data } = useInfiniteQuery({
+  const { data, isLoading, fetchNextPage, hasNextPage } = useInfiniteQuery({
     queryKey: [queryKey, queryString],
-    queryFn: () => queryFn(queryString),
+    queryFn: ({ pageParam }) => queryFn(`page=${pageParam}&${queryString}`),
     getNextPageParam: (lastPage) =>
-      lastPage.page === lastPage.total_pages ? false : lastPage.page + 1,
+      lastPage.page === lastPage.total_pages ? null : lastPage.page + 1,
     initialPageParam,
   });
 
   const result = data?.pages.flatMap((page) => page.results) ?? [];
 
-  return { result };
+  return { result, isLoading, fetchNextPage, hasNextPage };
 }
