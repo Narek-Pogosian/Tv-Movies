@@ -18,7 +18,7 @@ function ScoreRange({ value, onChange }: ScoreRangeProps) {
         max="10"
         step={1}
         onChange={onChange}
-        className="w-full"
+        className="w-full accent-rose-500 dark:accent-rose-400"
       />
     </div>
   );
