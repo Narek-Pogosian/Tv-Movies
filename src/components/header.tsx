@@ -3,8 +3,8 @@ import ThemeToggle from "./theme-toggle";
 
 function Header() {
   return (
-    <header>
-      <div className="container flex justify-between items-center py-4">
+    <header className="sticky inset-0 bg-background z-[999]">
+      <div className="container flex justify-between items-center py-2.5">
         <nav className="flex gap-4 sm:gap-8 items-center">
           <Link to="/" className="text-xl font-bold uppercase">
             TV & Movies
