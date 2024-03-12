@@ -7,6 +7,7 @@ import DetailsInfo from "../components/details-info";
 import RowList from "@/components/row-list";
 import PersonCard from "@/components/cards/person-card";
 import ErrorPage from "../components/error-page";
+import { removeDuplicates } from "@/lib/utils";
 
 function TvShowDetails() {
   useScrollTop();
@@ -22,6 +23,10 @@ function TvShowDetails() {
     select: (data) => ({
       ...data,
       videos: data.videos.results.filter((video) => video.type === "Trailer"),
+      credits: {
+        ...data.credits,
+        cast: removeDuplicates(data.credits.cast),
+      },
     }),
   });
 

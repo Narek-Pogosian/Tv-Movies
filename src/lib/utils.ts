@@ -5,6 +5,13 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export function removeDuplicates<T extends { id: number }>(items: T[]): T[] {
+  return items.filter(
+    (value, index, array) =>
+      array.findIndex((item) => item.id === value.id) === index
+  );
+}
+
 export function sortAndFilterByPopularity<
   T extends { poster_path: string; popularity: number }
 >(items: T[], minimumPopularity: number = 5): T[] {

@@ -3,7 +3,7 @@ import ThemeToggle from "./theme-toggle";
 
 function Header() {
   return (
-    <header className="sticky inset-0 bg-background z-[999]">
+    <header className="sticky inset-0 bg-background z-50">
       <div className="container flex justify-between items-center py-2.5">
         <nav className="flex gap-4 sm:gap-8 items-center">
           <Link to="/" className="text-xl font-bold uppercase">

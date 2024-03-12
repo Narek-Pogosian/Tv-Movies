@@ -2,7 +2,7 @@ import { useScrollTop } from "@/hooks/use-scroll-top";
 import { getPersonDetails } from "@/lib/api";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { sortAndFilterByVoteAverage } from "@/lib/utils";
+import { removeDuplicates, sortAndFilterByVoteAverage } from "@/lib/utils";
 import ErrorPage from "../components/error-page";
 import RowList from "@/components/row-list";
 import Card from "@/components/cards/card";
@@ -28,13 +28,9 @@ function PersonDetails() {
 
       return {
         ...data,
-        credits: sortAndFilterByVoteAverage(selectedCredits)
-          .filter(
-            // Remove Duplicates
-            (value, index, array) =>
-              array.findIndex((item) => item.id === value.id) === index
-          )
-          .slice(0, 15),
+        credits: removeDuplicates(
+          sortAndFilterByVoteAverage(selectedCredits)
+        ).slice(0, 15),
       };
     },
   });

@@ -24,7 +24,7 @@ function TvShows() {
           next={fetchNextPage}
           dataLength={result.length}
           hasMore={hasNextPage}
-          loader={<Loader />}
+          loader={!isError && <Loader />}
           endMessage={
             result.length > 20 && (
               <p className="py-6 font-semibold text-center">
