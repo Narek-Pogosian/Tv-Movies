@@ -67,6 +67,7 @@ function TvShowDetails() {
             id={person.id}
             image={person.profile_path}
             name={person.name}
+            character={person.character}
           />
         )}
       />

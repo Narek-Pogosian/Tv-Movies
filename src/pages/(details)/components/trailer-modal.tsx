@@ -34,7 +34,12 @@ const TestModal = ({ trailer }: { trailer: Video }) => {
                 >
                   &#x2715;
                 </button>
-                <Trailer trailer={trailer} />
+                <iframe
+                  className="w-full h-full"
+                  src={`https://www.youtube-nocookie.com/embed/${trailer.key}`}
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
+                ></iframe>
               </Dialog.Panel>
             </div>
           </div>
@@ -45,14 +50,3 @@ const TestModal = ({ trailer }: { trailer: Video }) => {
 };
 
 export default TestModal;
-
-const Trailer = ({ trailer }: { trailer: Video }) => {
-  return (
-    <iframe
-      className="z-50 w-full h-full"
-      src={`https://www.youtube-nocookie.com/embed/${trailer.key}`}
-      allow="autoplay; encrypted-media"
-      allowFullScreen
-    ></iframe>
-  );
-};
