@@ -5,7 +5,11 @@ import {
   SelectOptions,
   SelectWrapper,
 } from "@/components/ui/select";
-import { sortOptions } from "@/lib/constants/sort-options";
+import {
+  sortOptionsForTv,
+  sortOptionsForMovies,
+} from "@/lib/constants/sort-options";
+import { useLocation } from "react-router-dom";
 
 interface SortSelectProps {
   value: string;
@@ -13,6 +17,12 @@ interface SortSelectProps {
 }
 
 function SortSelect({ value, onChange }: SortSelectProps) {
+  const { pathname } = useLocation();
+
+  const sortOptions = pathname.includes("movie")
+    ? sortOptionsForMovies
+    : sortOptionsForTv;
+
   return (
     <SelectWrapper>
       <label htmlFor="sorting-select" className="font-semibold text-sm mb-1">
