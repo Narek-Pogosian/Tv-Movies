@@ -42,7 +42,7 @@ function RowList<T extends { id: number }>({
       <>
         {title && <h2>{title}</h2>}
         <ScrollListContainer>
-          TODO: Nicer error message/image
+          <p className="pt-10 font-semibold">Error</p>
         </ScrollListContainer>
       </>
     );

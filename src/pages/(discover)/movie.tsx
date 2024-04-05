@@ -14,7 +14,7 @@ function Movies() {
     });
 
   return (
-    <DiscoverLayout>
+    <DiscoverLayout isError={isError}>
       {isLoading ? (
         <SkeletonList />
       ) : result.length === 0 ? (
@@ -35,11 +35,6 @@ function Movies() {
         >
           <MoviesList movies={result} />
         </InfiniteScroll>
-      )}
-      {isError && (
-        <p className="text-lg text-muted-foreground text-center py-4">
-          Something went wrong. Please try again later.
-        </p>
       )}
     </DiscoverLayout>
   );

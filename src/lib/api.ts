@@ -14,7 +14,10 @@ async function apiWrapper<T>(params: string): Promise<T> {
     headers: {
       Authorization: `Bearer ${import.meta.env.VITE_API_TOKEN as string}`,
     },
-  }).then((res) => res.json());
+  }).then((res) => {
+    if (!res.ok) throw Error("Something went wrong");
+    return res.json();
+  });
 }
 
 export function getTrendingMovies(timeWindow: TimeWindow) {
