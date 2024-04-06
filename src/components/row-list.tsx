@@ -70,17 +70,15 @@ function ScrollListContainer({ children }: { children: React.ReactNode }) {
 
 // TODO: Optimize this function with a debounce or throttle. Maybe change to event listener.
 function SideScrollList({ children }: { children: React.ReactNode }) {
-  const [isEnd, setIsEnd] = useState(false);
-  const [isStart, setIsStart] = useState(true);
+  const [isAtEnd, setIsAtEnd] = useState(false);
+  const [isAtStart, setIsAtStart] = useState(true);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleScroll = (e: any) => {
     const { scrollWidth, scrollLeft, clientWidth } = e.target;
 
-    // Check if we are almost at the end of the scroll
-    setIsEnd(scrollWidth - scrollLeft < clientWidth + 10);
-    // Check if we are at the start of the scroll
-    setIsStart(scrollLeft < 10);
+    setIsAtEnd(scrollWidth - scrollLeft < clientWidth + 10);
+    setIsAtStart(scrollLeft < 10);
   };
 
   return (
@@ -91,16 +89,16 @@ function SideScrollList({ children }: { children: React.ReactNode }) {
       >
         <div
           className={cn(
-            "dark:md:w-28 opacity-0 transition-opacity duration-500 w-16 bg-gradient-to-r to-transparent from-background h-[calc(100%-22px)] absolute top-0 -left-1 z-10 pointer-events-none",
-            { "opacity-100": !isStart }
+            "dark:md:w-28 opacity-100 transition-opacity duration-500 w-16 bg-gradient-to-r to-transparent from-background h-[calc(100%-22px)] absolute top-0 -left-1 z-10 pointer-events-none",
+            { "opacity-0": isAtStart }
           )}
         />
         {children}
         <div
           className={cn(
-            "dark:md:w-28 opacity-0 transition-opacity duration-500 w-16 bg-gradient-to-r from-transparent to-background h-[calc(100%-22px)] absolute top-0 -right-1 z-10 pointer-events-none",
+            "dark:md:w-28 opacity-100 transition-opacity duration-500 w-16 bg-gradient-to-r from-transparent to-background h-[calc(100%-22px)] absolute top-0 -right-1 z-10 pointer-events-none",
             {
-              "opacity-100": !isEnd,
+              "opacity-0": isAtEnd,
             }
           )}
         />
