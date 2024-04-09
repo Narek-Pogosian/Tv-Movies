@@ -5,6 +5,9 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+/**
+ * Removes duplicate objects in an array by their id prop
+ */
 export function removeDuplicates<T extends { id: number }>(items: T[]): T[] {
   return items.filter(
     (value, index, array) =>
@@ -14,7 +17,7 @@ export function removeDuplicates<T extends { id: number }>(items: T[]): T[] {
 
 export function sortAndFilterByPopularity<
   T extends { poster_path: string; popularity: number }
->(items: T[], minimumPopularity: number = 5): T[] {
+>(items: T[], minimumPopularity = 5): T[] {
   return items
     .filter(
       (item) => item.poster_path !== null && item.popularity > minimumPopularity
@@ -24,13 +27,13 @@ export function sortAndFilterByPopularity<
 
 export function sortAndFilterByVoteAverage<
   T extends { poster_path: string; vote_average: number; vote_count: number }
->(items: T[], minimumVoteAverage: number = 2): T[] {
+>(items: T[], minimumVoteAverage = 2, minimumVoteCount = 50): T[] {
   return items
     .filter(
       (item) =>
         item.poster_path !== null &&
         item.vote_average > minimumVoteAverage &&
-        item.vote_count > 50
+        item.vote_count > minimumVoteCount
     )
     .sort((a, b) => b.vote_average - a.vote_average);
 }

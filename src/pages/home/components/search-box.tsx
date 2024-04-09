@@ -1,3 +1,4 @@
+import { type SearchResult } from "@/lib/types";
 import { Combobox } from "@headlessui/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -5,14 +6,17 @@ import { useQuery } from "@tanstack/react-query";
 import { useDebounce } from "@/hooks/use-debounce";
 import { sortAndFilterByPopularity } from "@/lib/utils";
 import { getSearchResults } from "@/lib/api";
-import { type SearchResult } from "@/lib/types";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const SearchBox = () => {
   const [query, setQuery] = useState("");
   const debouncedValue = useDebounce(query, 500);
 
-  const { data: results, isLoading } = useQuery({
+  const {
+    data: results,
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ["search", debouncedValue],
     queryFn: () => getSearchResults(debouncedValue),
     enabled: !!debouncedValue.trim(),
@@ -42,12 +46,12 @@ const SearchBox = () => {
         >
           {isLoading ? (
             <ComboBoxLoading />
-          ) : results?.length ? (
-            results?.map((item) => (
+          ) : isError || !results || results.length == 0 ? (
+            <ComboBoxError />
+          ) : (
+            results.map((item) => (
               <ComboBoxListItem item={item} key={item.id} />
             ))
-          ) : (
-            <ComboBoxError />
           )}
         </Combobox.Options>
       )}
