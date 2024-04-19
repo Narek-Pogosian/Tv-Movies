@@ -24,7 +24,6 @@ export function getTrendingMovies(timeWindow: TimeWindow) {
   return apiWrapper<Response<Movie>>(`/trending/movie/${timeWindow}`);
 }
 
-// ***** DISCOVER *****
 export function getMovies(query: string) {
   const b = query.includes("vote_count.gte") ? "" : "&vote_count.gte=20";
 
@@ -41,7 +40,6 @@ export function getTvShows(query: string) {
   );
 }
 
-// ***** DETAILS *****
 export function getMovieDetails(id = "") {
   return apiWrapper<MovieDetails>(
     `/movie/${id}?append_to_response=credits,videos,images`
@@ -60,14 +58,12 @@ export function getPersonDetails(id = "") {
   );
 }
 
-// ***** SEARCH *****
 export function getSearchResults(query: string) {
   return apiWrapper<Response<SearchResult>>(
     `/search/multi?include_adult=false&language=en-US&page=1&query=${query}`
   );
 }
 
-// ***** GENRES *****
 export function getGenres(mediaType: "tv" | "movie") {
   return apiWrapper(`/genre/${mediaType}/list?language=en-US`);
 }

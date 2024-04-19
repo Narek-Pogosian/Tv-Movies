@@ -8,7 +8,7 @@ interface GetInfiniteProps<T> {
   initialPageParam?: number;
 }
 
-export function useGetInfinite<T>({
+export function useGetInfiniteQuery<T>({
   queryKey,
   queryFn,
   initialPageParam = 1,

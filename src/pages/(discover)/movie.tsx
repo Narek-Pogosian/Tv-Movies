@@ -1,5 +1,5 @@
 import { MoviesList, SkeletonList } from "./components/lists";
-import { useGetInfinite } from "@/hooks/use-get-infinite";
+import { useGetInfiniteQuery } from "@/hooks/use-get-infinite";
 import { getMovies } from "@/lib/api";
 import DiscoverLayout from "./components/discover-layout";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -8,7 +8,7 @@ import EmptyMessage from "./components/empty-message";
 
 function Movies() {
   const { result, isLoading, isError, fetchNextPage, hasNextPage } =
-    useGetInfinite({
+    useGetInfiniteQuery({
       queryKey: "movies",
       queryFn: getMovies,
     });

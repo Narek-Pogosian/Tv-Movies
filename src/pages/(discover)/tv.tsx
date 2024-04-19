@@ -1,4 +1,4 @@
-import { useGetInfinite } from "@/hooks/use-get-infinite";
+import { useGetInfiniteQuery } from "@/hooks/use-get-infinite";
 import { getTvShows } from "@/lib/api";
 import { SkeletonList, TvList } from "./components/lists";
 import DiscoverLayout from "./components/discover-layout";
@@ -8,7 +8,7 @@ import EmptyMessage from "./components/empty-message";
 
 function TvShows() {
   const { result, isLoading, isError, fetchNextPage, hasNextPage } =
-    useGetInfinite({
+    useGetInfiniteQuery({
       queryKey: "tvShows",
       queryFn: getTvShows,
     });
