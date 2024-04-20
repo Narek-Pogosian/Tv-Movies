@@ -23,29 +23,34 @@ function TvContent() {
       queryFn: getTvShows,
     });
 
+  if (isLoading) {
+    return <SkeletonList />;
+  }
+
+  if (result.length === 0) {
+    return <EmptyMessage mediaType="tv shows" />;
+  }
+
   return (
-    <>
-      {isLoading ? (
-        <SkeletonList />
-      ) : result.length === 0 ? (
-        <EmptyMessage mediaType="tv shows" />
-      ) : (
-        <InfiniteScroll
-          next={fetchNextPage}
-          dataLength={result.length}
-          hasMore={hasNextPage}
-          loader={!isError && <Loader />}
-          endMessage={
-            result.length > 20 && (
-              <p className="py-6 font-semibold text-center">
-                Yay! You have seen it all
-              </p>
-            )
-          }
-        >
-          <TvList tvShows={result} />
-        </InfiniteScroll>
+    <InfiniteScroll
+      next={fetchNextPage}
+      dataLength={result.length}
+      hasMore={hasNextPage}
+      loader={!isError && <Loader />}
+      endMessage={
+        result.length > 20 && (
+          <p className="py-6 font-semibold text-center">
+            Yay! You have seen it all
+          </p>
+        )
+      }
+    >
+      <TvList tvShows={result} />
+      {isError && (
+        <p className="py-6 font-semibold text-center text-red-600">
+          Something went wrong, try again later.
+        </p>
       )}
-    </>
+    </InfiniteScroll>
   );
 }
