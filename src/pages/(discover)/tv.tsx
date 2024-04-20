@@ -7,6 +7,16 @@ import Loader from "./components/loader";
 import EmptyMessage from "./components/empty-message";
 
 function TvShows() {
+  return (
+    <DiscoverLayout>
+      <TvContent />
+    </DiscoverLayout>
+  );
+}
+
+export default TvShows;
+
+function TvContent() {
   const { result, isLoading, isError, fetchNextPage, hasNextPage } =
     useGetInfiniteQuery({
       queryKey: "tvShows",
@@ -14,7 +24,7 @@ function TvShows() {
     });
 
   return (
-    <DiscoverLayout isError={isError}>
+    <>
       {isLoading ? (
         <SkeletonList />
       ) : result.length === 0 ? (
@@ -36,8 +46,6 @@ function TvShows() {
           <TvList tvShows={result} />
         </InfiniteScroll>
       )}
-    </DiscoverLayout>
+    </>
   );
 }
-
-export default TvShows;

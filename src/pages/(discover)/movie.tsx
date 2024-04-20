@@ -7,6 +7,19 @@ import Loader from "./components/loader";
 import EmptyMessage from "./components/empty-message";
 
 function Movies() {
+  // TODO: Refactor and remove inifinite scroll deps,
+  // Make so if isError, still show the results we have.
+
+  return (
+    <DiscoverLayout>
+      <MoviesContent />
+    </DiscoverLayout>
+  );
+}
+
+export default Movies;
+
+function MoviesContent() {
   const { result, isLoading, isError, fetchNextPage, hasNextPage } =
     useGetInfiniteQuery({
       queryKey: "movies",
@@ -14,7 +27,7 @@ function Movies() {
     });
 
   return (
-    <DiscoverLayout isError={isError}>
+    <>
       {isLoading ? (
         <SkeletonList />
       ) : result.length === 0 ? (
@@ -36,8 +49,6 @@ function Movies() {
           <MoviesList movies={result} />
         </InfiniteScroll>
       )}
-    </DiscoverLayout>
+    </>
   );
 }
-
-export default Movies;
