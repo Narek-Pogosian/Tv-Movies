@@ -1,10 +1,10 @@
+import { EmptyMessage, EndMessage, ErrorMessage } from "./components/messages";
+import { SkeletonList, TvList } from "./components/lists";
 import { useGetInfiniteQuery } from "@/hooks/use-get-infinite";
 import { getTvShows } from "@/lib/api";
-import { SkeletonList, TvList } from "./components/lists";
 import DiscoverLayout from "./components/discover-layout";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from "./components/loader";
-import EmptyMessage from "./components/empty-message";
 
 function TvShows() {
   return (
@@ -37,20 +37,10 @@ function TvContent() {
       dataLength={result.length}
       hasMore={hasNextPage}
       loader={!isError && <Loader />}
-      endMessage={
-        result.length > 20 && (
-          <p className="py-6 font-semibold text-center">
-            Yay! You have seen it all
-          </p>
-        )
-      }
+      endMessage={result.length > 20 && <EndMessage />}
     >
       <TvList tvShows={result} />
-      {isError && (
-        <p className="py-6 font-semibold text-center text-red-600">
-          Something went wrong, try again later.
-        </p>
-      )}
+      <ErrorMessage isError={isError} />
     </InfiniteScroll>
   );
 }
