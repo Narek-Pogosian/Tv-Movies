@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { useDebounce } from "@/hooks/use-debounce";
 import { sortAndFilterByPopularity } from "@/lib/utils";
-import { getSearchResults } from "@/lib/api";
 import { Skeleton } from "@/components/ui/skeleton";
+import { api } from "@/lib/api";
 
 const SearchBox = () => {
   const [query, setQuery] = useState("");
@@ -18,7 +18,7 @@ const SearchBox = () => {
     isError,
   } = useQuery({
     queryKey: ["search", debouncedValue],
-    queryFn: () => getSearchResults(debouncedValue),
+    queryFn: () => api.getSearchResults(debouncedValue),
     enabled: !!debouncedValue.trim(),
     select: (data) => sortAndFilterByPopularity(data.results, 5),
   });

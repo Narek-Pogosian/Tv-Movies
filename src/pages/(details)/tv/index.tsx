@@ -1,13 +1,13 @@
 import { useScrollTop } from "@/hooks/use-scroll-top";
-import { getTvDetails } from "@/lib/api";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
+import { removeDuplicates } from "@/lib/utils";
 import DetailsInfoSkeletonShell from "../components/details-info-skeleton-shell";
 import DetailsInfo from "../components/details-info";
 import RowList from "@/components/row-list";
 import PersonCard from "@/components/cards/person-card";
 import ErrorPage from "../components/error-page";
-import { removeDuplicates } from "@/lib/utils";
+import { api } from "@/lib/api";
 
 function TvShowDetails() {
   useScrollTop();
@@ -19,7 +19,7 @@ function TvShowDetails() {
     isLoading,
   } = useQuery({
     queryKey: ["tv", id],
-    queryFn: () => getTvDetails(id),
+    queryFn: () => api.getTvDetails(id),
     select: (data) => ({
       ...data,
       videos: data.videos.results.filter((video) => video.type === "Trailer"),

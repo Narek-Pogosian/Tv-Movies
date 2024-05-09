@@ -1,6 +1,6 @@
 import TvCard from "@/components/cards/tv-card";
 import RowList from "@/components/row-list";
-import { getTvShows } from "@/lib/api";
+import { api } from "@/lib/api";
 import { useQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 
@@ -12,7 +12,8 @@ function TopTvShows() {
 
   const { data, isError, isLoading } = useQuery({
     queryKey: ["top-tv-shows"],
-    queryFn: () => getTvShows("vote_count.gte=300&sort_by=vote_average.desc"),
+    queryFn: () =>
+      api.getTvShows("vote_count.gte=300&sort_by=vote_average.desc"),
     enabled: inView,
   });
 

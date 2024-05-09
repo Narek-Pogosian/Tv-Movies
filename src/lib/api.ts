@@ -20,50 +20,67 @@ async function apiWrapper<T>(params: string): Promise<T> {
   });
 }
 
-export function getTrendingMovies(timeWindow: TimeWindow) {
+// Make sure to export the function in the api object at the bottom.
+
+function getTrendingMovies(timeWindow: TimeWindow) {
   return apiWrapper<Response<Movie>>(`/trending/movie/${timeWindow}`);
 }
 
-export function getMovies(query: string) {
-  const b = query.includes("vote_count.gte") ? "" : "&vote_count.gte=20";
+function getMovies(query: string) {
+  const voteCountQuery = query.includes("vote_count.gte")
+    ? ""
+    : "&vote_count.gte=20";
 
   return apiWrapper<Response<Movie>>(
-    `/discover/movie?${query}&language=en-US${b}`
+    `/discover/movie?${query}&language=en-US${voteCountQuery}`
   );
 }
 
-export function getTvShows(query: string) {
-  const b = query.includes("vote_count.gte") ? "" : "&vote_count.gte=20";
+function getTvShows(query: string) {
+  const voteCountQuery = query.includes("vote_count.gte")
+    ? ""
+    : "&vote_count.gte=20";
 
   return apiWrapper<Response<TvShow>>(
-    `/discover/tv?${query}&language=en-US${b}`
+    `/discover/tv?${query}&language=en-US${voteCountQuery}`
   );
 }
 
-export function getMovieDetails(id = "") {
+function getMovieDetails(id = "") {
   return apiWrapper<MovieDetails>(
     `/movie/${id}?append_to_response=credits,videos,images`
   );
 }
 
-export function getTvDetails(id = "") {
+function getTvDetails(id = "") {
   return apiWrapper<TvDetails>(
     `/tv/${id}?append_to_response=credits,videos,images`
   );
 }
 
-export function getPersonDetails(id = "") {
+function getPersonDetails(id = "") {
   return apiWrapper<Person>(
     `/person/${id}?append_to_response=external_ids,combined_credits`
   );
 }
 
-export function getSearchResults(query: string) {
+function getSearchResults(query: string) {
   return apiWrapper<Response<SearchResult>>(
     `/search/multi?include_adult=false&language=en-US&page=1&query=${query}`
   );
 }
 
-export function getGenres(mediaType: "tv" | "movie") {
+function getGenres(mediaType: "tv" | "movie") {
   return apiWrapper(`/genre/${mediaType}/list?language=en-US`);
 }
+
+export const api = {
+  getGenres,
+  getMovieDetails,
+  getMovies,
+  getPersonDetails,
+  getSearchResults,
+  getTrendingMovies,
+  getTvDetails,
+  getTvShows,
+};

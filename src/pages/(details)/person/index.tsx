@@ -1,5 +1,5 @@
 import { useScrollTop } from "@/hooks/use-scroll-top";
-import { getPersonDetails } from "@/lib/api";
+import { api } from "@/lib/api";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { removeDuplicates, sortAndFilterByVoteAverage } from "@/lib/utils";
@@ -19,7 +19,7 @@ function PersonDetails() {
     isLoading,
   } = useQuery({
     queryKey: ["person", id],
-    queryFn: () => getPersonDetails(id),
+    queryFn: () => api.getPersonDetails(id),
     select: (data) => {
       const selectedCredits =
         data.known_for_department === "Acting"

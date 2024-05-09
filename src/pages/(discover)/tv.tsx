@@ -1,7 +1,7 @@
 import { EmptyMessage, EndMessage, ErrorMessage } from "./components/messages";
 import { SkeletonList, TvList } from "./components/lists";
 import { useGetInfiniteQuery } from "@/hooks/use-get-infinite";
-import { getTvShows } from "@/lib/api";
+import { api } from "@/lib/api";
 import DiscoverLayout from "./components/discover-layout";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from "./components/loader";
@@ -20,7 +20,7 @@ function TvContent() {
   const { result, isLoading, isError, fetchNextPage, hasNextPage } =
     useGetInfiniteQuery({
       queryKey: "tvShows",
-      queryFn: getTvShows,
+      queryFn: api.getTvShows,
     });
 
   if (isLoading) {

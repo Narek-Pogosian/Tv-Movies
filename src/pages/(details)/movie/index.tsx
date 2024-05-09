@@ -1,13 +1,13 @@
-import { getMovieDetails } from "@/lib/api";
-import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
-import DetailsInfo from "../components/details-info";
-import RowList from "@/components/row-list";
-import PersonCard from "@/components/cards/person-card";
 import DetailsInfoSkeletonShell from "../components/details-info-skeleton-shell";
-import { useScrollTop } from "@/hooks/use-scroll-top";
+import DetailsInfo from "../components/details-info";
+import PersonCard from "@/components/cards/person-card";
+import RowList from "@/components/row-list";
 import ErrorPage from "../components/error-page";
 import { removeDuplicates } from "@/lib/utils";
+import { useScrollTop } from "@/hooks/use-scroll-top";
+import { useQuery } from "@tanstack/react-query";
+import { useParams } from "react-router-dom";
+import { api } from "@/lib/api";
 
 function MovieDetails() {
   useScrollTop();
@@ -19,7 +19,7 @@ function MovieDetails() {
     isLoading,
   } = useQuery({
     queryKey: ["movie", id],
-    queryFn: () => getMovieDetails(id),
+    queryFn: () => api.getMovieDetails(id),
     select: (data) => ({
       ...data,
       videos: data.videos.results.filter((video) => video.type === "Trailer"),

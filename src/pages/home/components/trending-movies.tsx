@@ -1,6 +1,6 @@
 import MovieCard from "@/components/cards/movie-card";
 import RowList from "@/components/row-list";
-import { getTrendingMovies } from "@/lib/api";
+import { api } from "@/lib/api";
 import { TimeWindow } from "@/lib/types";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
@@ -11,7 +11,7 @@ function TrendingMovies() {
 
   const { data, isError, isLoading } = useQuery({
     queryKey: ["trending-movies" + timeWindow],
-    queryFn: () => getTrendingMovies(timeWindow),
+    queryFn: () => api.getTrendingMovies(timeWindow),
     refetchOnWindowFocus: true,
   });
 
