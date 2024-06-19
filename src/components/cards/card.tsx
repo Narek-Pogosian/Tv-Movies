@@ -1,10 +1,14 @@
 import { Star } from "lucide-react";
 import { Link } from "react-router-dom";
 
-interface CardProps extends React.ComponentPropsWithoutRef<"div"> {}
+interface CardProps extends React.ComponentPropsWithoutRef<"article"> {}
 
 function Card({ children, ...rest }: CardProps) {
-  return <div {...rest}>{children}</div>;
+  return (
+    <article className="relative" {...rest}>
+      {children}
+    </article>
+  );
 }
 
 Card.Image = CardImage;
@@ -14,36 +18,28 @@ Card.SubInfo = CardSubInfo;
 
 export default Card;
 
-function CardImage({
-  image,
-  title,
-  href,
-}: {
-  image?: string;
-  title: string;
-  href: string;
-}) {
+function CardImage({ image, title }: { image?: string; title: string }) {
   return (
-    <Link to={href} className="relative aspect-[3/4.5] block">
+    <div className="relative aspect-[3/4.5] block" aria-hidden>
       {image ? (
         <img
           src={"https://image.tmdb.org/t/p/w500" + image}
           alt={title}
           loading="lazy"
-          className="rounded aspect-[3/4.5] object-cover w-full h-full"
+          className="rounded border-2 aspect-[3/4.5] object-cover w-full h-full"
         />
       ) : (
         <div className="rounded bg-accent grid w-full h-full aspect-[3/4.5] place-content-center">
           <img src="/no-image.svg" alt="" width={50} height={50} />
         </div>
       )}
-    </Link>
+    </div>
   );
 }
 
 function CardInfo({ children }: { children: React.ReactNode }) {
   return (
-    <div className="px-1 pt-1 flex flex-col font-semibold text-sm">
+    <div className="px-1 pt-2 flex flex-col font-semibold text-sm">
       {children}
     </div>
   );
@@ -51,9 +47,11 @@ function CardInfo({ children }: { children: React.ReactNode }) {
 
 function CardTitle({ title, href }: { title: string; href: string }) {
   return (
-    <Link to={href} className="truncate mb-1" title={title}>
-      {title}
-    </Link>
+    <h3 className="truncate mb-1" title={title}>
+      <Link to={href} className="after:absolute after:inset-0">
+        {title}
+      </Link>
+    </h3>
   );
 }
 

@@ -8,13 +8,9 @@ interface TvCardProps {
 function TvCard({ tvShow }: TvCardProps) {
   return (
     <Card>
-      <Card.Image
-        href={`/tv/${tvShow.id}`}
-        image={tvShow.poster_path}
-        title={tvShow.name}
-      />
+      <Card.Image image={tvShow.poster_path} title={tvShow.name} />
       <Card.Info>
-        <Card.Title href={`/tv/${tvShow.id}`} title={tvShow.name} />
+        <Card.Title title={tvShow.name} href={`/tv/${tvShow.id}`} />
         <Card.SubInfo
           rating={tvShow.vote_average}
           releaseDate={tvShow.first_air_date}

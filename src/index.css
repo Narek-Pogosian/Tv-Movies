@@ -76,7 +76,7 @@
   }
 
   h2 {
-    @apply text-xl lg:text-2xl font-bold mb-2;
+    @apply text-lg lg:text-xl font-semibold mb-2;
   }
 }
 

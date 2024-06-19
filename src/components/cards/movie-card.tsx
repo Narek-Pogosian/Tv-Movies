@@ -8,13 +8,9 @@ interface MovieCardProps {
 function MovieCard({ movie }: MovieCardProps) {
   return (
     <Card>
-      <Card.Image
-        href={`/movie/${movie.id}`}
-        image={movie.poster_path}
-        title={movie.title}
-      />
+      <Card.Image image={movie.poster_path} title={movie.title} />
       <Card.Info>
-        <Card.Title href={`/movie/${movie.id}`} title={movie.title} />
+        <Card.Title title={movie.title} href={`/movie/${movie.id}`} />
         <Card.SubInfo
           rating={movie.vote_average}
           releaseDate={movie.release_date}

@@ -10,9 +10,9 @@ interface PersonCardProps {
 function PersonCard({ id, image, name, character }: PersonCardProps) {
   return (
     <Card title={name}>
-      <Card.Image href={`/person/${id}`} image={image} title={name} />
+      <Card.Image image={image} title={name} />
       <Card.Info>
-        <Card.Title href={`/person/${id}`} title={name} />
+        <Card.Title title={name} href={`/person/${id}`} />
         {character && (
           <p
             className="text-muted-foreground !font-base truncate"
