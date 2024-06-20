@@ -16,9 +16,11 @@ function TrendingMovies() {
   });
 
   return (
-    <section>
-      <h2>Trending</h2>
-      <TrendingToggle timeWindow={timeWindow} setTimeWindow={setTimeWindow} />
+    <section aria-labelledby="trending">
+      <div className="flex gap-4 items-center">
+        <h2 id="trending">Trending</h2>
+        <TrendingToggle timeWindow={timeWindow} setTimeWindow={setTimeWindow} />
+      </div>
       <RowList
         key={timeWindow}
         items={data?.results}

@@ -25,7 +25,10 @@ function SortSelect({ value, onChange }: SortSelectProps) {
 
   return (
     <SelectWrapper>
-      <label htmlFor="sorting-select" className="font-semibold text-sm mb-1">
+      <label
+        htmlFor="sorting-select"
+        className="font-semibold text-sm mb-1 block"
+      >
         Sort by
       </label>
       <Select value={value} onChange={onChange}>

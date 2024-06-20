@@ -11,7 +11,7 @@ function List<T extends { id: number }>({
   render: (item: T) => React.ReactNode;
 }) {
   return (
-    <ul className="grid gap-x-4 gap-y-8 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+    <ul className="grid gap-x-4 p-1 gap-y-8 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
       {items.map((item, index) => (
         <li key={item.id + index}>{render(item)}</li>
       ))}
@@ -21,7 +21,7 @@ function List<T extends { id: number }>({
 
 export function SkeletonList() {
   return (
-    <ul className="grid gap-x-4 gap-y-8 w-full xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+    <ul className="grid gap-x-4 p-1 gap-y-8 w-full grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
       {[...Array(20)].map((_, index) => (
         <SkeletonCard key={index} />
       ))}

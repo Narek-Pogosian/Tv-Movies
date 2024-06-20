@@ -22,7 +22,10 @@ function GenresSelect({ value, onChange }: GenresSelectProps) {
   return (
     <SelectWrapper>
       <Listbox multiple value={value} onChange={onChange}>
-        <label htmlFor="genres-select" className="font-semibold text-sm mb-1">
+        <label
+          htmlFor="genres-select"
+          className="font-semibold text-sm mb-1 block"
+        >
           Select genres
         </label>
         <SelectButton id="genres-select">Genres</SelectButton>

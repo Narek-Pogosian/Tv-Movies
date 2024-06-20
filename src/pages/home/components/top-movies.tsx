@@ -18,8 +18,8 @@ function TopMovies() {
   });
 
   return (
-    <section ref={ref}>
-      <h2>Popular Movies</h2>
+    <section ref={ref} aria-labelledby="popular-movies">
+      <h2 id="popular-movies">Popular Movies</h2>
       <RowList
         items={data?.results}
         isLoading={isLoading}

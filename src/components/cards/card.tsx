@@ -5,7 +5,10 @@ interface CardProps extends React.ComponentPropsWithoutRef<"article"> {}
 
 function Card({ children, ...rest }: CardProps) {
   return (
-    <article className="relative" {...rest}>
+    <article
+      className="relative rounded has-[:focus-visible]:ring-2 ring-primary ring-offset-1 ring-offset-background"
+      {...rest}
+    >
       {children}
     </article>
   );
@@ -48,7 +51,7 @@ function CardInfo({ children }: { children: React.ReactNode }) {
 function CardTitle({ title, href }: { title: string; href: string }) {
   return (
     <h3 className="truncate mb-1" title={title}>
-      <Link to={href} className="after:absolute after:inset-0">
+      <Link to={href} className="after:absolute outline-none after:inset-0">
         {title}
       </Link>
     </h3>

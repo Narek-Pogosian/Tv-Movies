@@ -18,8 +18,8 @@ function TopTvShows() {
   });
 
   return (
-    <section ref={ref}>
-      <h2>Popular Tv Shows</h2>
+    <section ref={ref} aria-labelledby="popular-tv">
+      <h2 id="popular-tv">Popular Tv Shows</h2>
       <RowList
         items={data?.results}
         isLoading={isLoading}

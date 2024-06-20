@@ -52,13 +52,16 @@ function PersonDetails() {
         isLoading={isLoading}
         isError={!!error}
         render={(item) => (
-          <Card href={`/${item.media_type}/${item.id}`}>
+          <Card>
             <Card.Image
               image={item.poster_path}
               title={item.name ?? item.title ?? ""}
             />
             <Card.Info>
-              <Card.Title title={item.name ?? item.title ?? ""} />
+              <Card.Title
+                title={item.name ?? item.title ?? ""}
+                href={`/${item.media_type}/${item.id}`}
+              />
               <Card.SubInfo
                 rating={item.vote_average}
                 releaseDate={item.release_date ?? item.first_air_date ?? ""}
