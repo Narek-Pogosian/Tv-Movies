@@ -8,7 +8,15 @@ interface MovieCardProps {
 function MovieCard({ movie }: MovieCardProps) {
   return (
     <Card>
-      <Card.Image image={movie.poster_path} title={movie.title} />
+      <div className="relative" aria-hidden>
+        <Card.Image image={movie.poster_path} title={movie.title} />
+        <Card.ImageInfo
+          overview={movie.overview}
+          title={movie.title}
+          vote={movie.vote_average}
+          voteCount={movie.vote_count}
+        />
+      </div>
       <Card.Info>
         <Card.Title title={movie.title} href={`/movie/${movie.id}`} />
         <Card.SubInfo
