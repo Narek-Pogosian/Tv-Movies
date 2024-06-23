@@ -67,7 +67,9 @@ export function SelectOption({
         <>
           <span
             className={`block rounded pointer-events-none py-1.5 pl-4  ${
-              selected ? "bg-primary text-primary-foreground" : ""
+              selected
+                ? "bg-black text-white dark:bg-white dark:text-black"
+                : ""
             }`}
           >
             {children}

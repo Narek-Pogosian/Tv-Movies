@@ -47,7 +47,7 @@ const DetailsInfo = ({
           className="h-fit hidden md:block rounded"
         />
       ) : (
-        <div className="md:grid w-[256px] h-[384px] hidden rounded bg-accent place-content-center">
+        <div className="md:grid w-[256px] h-[384px] hidden rounded bg-muted place-content-center">
           <img src="/no-image.svg" alt="" width={50} height={50} />
         </div>
       )}
@@ -60,7 +60,7 @@ const DetailsInfo = ({
           alt=""
         />
       ) : (
-        <div className="grid md:hidden rounded w-full aspect-[10/4.5] bg-accent place-content-center">
+        <div className="grid md:hidden rounded w-full aspect-[10/4.5] bg-muted place-content-center">
           <img src="/no-image.svg" alt="" width={50} height={50} />
         </div>
       )}

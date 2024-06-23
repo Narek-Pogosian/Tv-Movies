@@ -16,7 +16,7 @@ const TestModal = ({ trailer }: { trailer: Video }) => {
 
   return (
     <>
-      <Button variant="gradient" onClick={openModal}>
+      <Button onClick={openModal}>
         <img src="/play.svg" alt="" />
         <span>Play Trailer</span>
       </Button>

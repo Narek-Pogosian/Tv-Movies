@@ -18,7 +18,7 @@ function PersonDetailsInfo({ person }: PersonDetailsInfoProps) {
             className="h-fit rounded"
           />
         ) : (
-          <div className="md:grid w-[256px] h-[384px] hidden rounded bg-accent place-content-center">
+          <div className="md:grid w-[256px] h-[384px] hidden rounded bg-muted place-content-center">
             <img src="/no-image.svg" alt="" width={50} height={50} />
           </div>
         )}

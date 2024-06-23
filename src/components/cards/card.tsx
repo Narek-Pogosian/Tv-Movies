@@ -33,7 +33,7 @@ function CardImage({ image, title }: { image?: string; title: string }) {
           className="rounded aspect-[3/4.5] object-cover w-full h-full"
         />
       ) : (
-        <div className="rounded bg-accent grid w-full h-full aspect-[3/4.5] place-content-center">
+        <div className="rounded bg-muted grid w-full h-full aspect-[3/4.5] place-content-center">
           <img src="/no-image.svg" alt="" width={50} height={50} />
         </div>
       )}

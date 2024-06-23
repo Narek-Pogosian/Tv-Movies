@@ -70,11 +70,7 @@ function Filters() {
           />
         </div>
       </MyDisclosure>
-      <Button
-        variant="gradient"
-        asChild
-        className="rounded-full w-full mt-4 text-base"
-      >
+      <Button asChild className="rounded-full w-full mt-4 text-base">
         <Link to={setSearchQueries(filters)}>Search</Link>
       </Button>
     </>

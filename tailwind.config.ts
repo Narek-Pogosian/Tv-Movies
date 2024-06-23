@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import colors from "tailwindcss/colors";
 
 const config = {
   darkMode: ["class"],
@@ -12,6 +13,15 @@ const config = {
         "2xl": "1380px",
       },
     },
+    colors: {
+      white: colors.white,
+      black: colors.black,
+      transparent: colors.transparent,
+      current: colors.current,
+      neutral: colors.neutral,
+      rose: colors.rose,
+      amber: colors.amber,
+    },
     extend: {
       screens: {
         xs: "475px",
@@ -23,21 +33,9 @@ const config = {
         scrollbar: "hsl(var(--scrollbar))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
         },
         element: {
           DEFAULT: "hsl(var(--element))",
