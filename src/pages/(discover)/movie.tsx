@@ -1,10 +1,11 @@
 import { EmptyMessage, EndMessage, ErrorMessage } from "./components/messages";
-import { MoviesList, SkeletonList } from "./components/lists";
+import { List, SkeletonList } from "./components/lists";
 import { useGetInfiniteQuery } from "@/hooks/use-get-infinite";
+import { api } from "@/lib/api";
 import DiscoverLayout from "./components/discover-layout";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from "./components/loader";
-import { api } from "@/lib/api";
+import MovieCard from "@/components/cards/movie-card";
 
 function Movies() {
   return (
@@ -39,7 +40,7 @@ function MoviesContent() {
       loader={!isError && <Loader />}
       endMessage={result.length > 20 && <EndMessage />}
     >
-      <MoviesList movies={result} />
+      <List items={result} render={(movie) => <MovieCard movie={movie} />} />
       <ErrorMessage isError={isError} />
     </InfiniteScroll>
   );

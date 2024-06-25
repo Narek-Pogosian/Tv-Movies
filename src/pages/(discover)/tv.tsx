@@ -1,10 +1,11 @@
 import { EmptyMessage, EndMessage, ErrorMessage } from "./components/messages";
-import { SkeletonList, TvList } from "./components/lists";
+import { List, SkeletonList } from "./components/lists";
 import { useGetInfiniteQuery } from "@/hooks/use-get-infinite";
 import { api } from "@/lib/api";
 import DiscoverLayout from "./components/discover-layout";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from "./components/loader";
+import TvCard from "@/components/cards/tv-card";
 
 function TvShows() {
   return (
@@ -39,7 +40,7 @@ function TvContent() {
       loader={!isError && <Loader />}
       endMessage={result.length > 20 && <EndMessage />}
     >
-      <TvList tvShows={result} />
+      <List items={result} render={(tv) => <TvCard tvShow={tv} />} />
       <ErrorMessage isError={isError} />
     </InfiniteScroll>
   );

@@ -35,7 +35,7 @@ const SearchBox = () => {
         type="search"
         autoComplete="off"
         placeholder="Search for movie, tv show or person"
-        className="w-full px-6 py-3 transition-shadow duration-300 font-semibold border rounded-full outline-none focus:ring-primary focus:ring-1 bg-element"
+        className="w-full px-6 py-3 transition-shadow duration-300 font-semibold border rounded-full outline-none focus:ring-ring focus:ring-1 bg-element"
         value={query}
         onChange={(event) => setQuery(event.target.value)}
       />

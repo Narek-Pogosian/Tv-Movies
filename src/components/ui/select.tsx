@@ -18,7 +18,7 @@ export function SelectButton({
   return (
     <Listbox.Button
       id={id}
-      className="relative w-full shadow shadow-slate-500/10 dark:shadow-[inset_0_1px_1px_1px_#ffffff08] cursor-pointer text-sm font-medium rounded dark:bg-white/5 bg-slate-400/5 py-2 pl-3 pr-10 text-left "
+      className="relative w-full shadow shadow-neutrual-500/10 dark:shadow-[inset_0_1px_1px_1px_#ffffff08] cursor-pointer text-sm font-medium rounded dark:bg-white/5 bg-neutrual-400/5 py-2 pl-3 pr-10 text-left "
     >
       <span className="block truncate">{children}</span>
       <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
@@ -59,7 +59,7 @@ export function SelectOption({
       value={value}
       className={({ active }) =>
         `cursor-pointer m-0.5 font-medium rounded ${
-          active ? "dark:bg-white/10 bg-slate-400/10" : ""
+          active ? "dark:bg-white/10 bg-neutral-400/10" : ""
         }`
       }
     >
