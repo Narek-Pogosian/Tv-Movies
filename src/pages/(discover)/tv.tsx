@@ -6,6 +6,8 @@ import DiscoverLayout from "./components/discover-layout";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from "./components/loader";
 import TvCard from "@/components/cards/tv-card";
+import { useShowDescriptiveGrid } from "@/hooks/use-show-descriptive-grid-context";
+import DescriptiveCard from "@/components/cards/descriptive-card";
 
 function TvShows() {
   return (
@@ -18,6 +20,7 @@ function TvShows() {
 export default TvShows;
 
 function TvContent() {
+  const { showDescriptiveGrid } = useShowDescriptiveGrid();
   const { result, isLoading, isError, fetchNextPage, hasNextPage } =
     useGetInfiniteQuery({
       queryKey: "tvShows",
@@ -40,7 +43,23 @@ function TvContent() {
       loader={!isError && <Loader />}
       endMessage={result.length > 20 && <EndMessage />}
     >
-      <List items={result} render={(tv) => <TvCard tvShow={tv} />} />
+      <List
+        items={result}
+        render={(tv) =>
+          showDescriptiveGrid ? (
+            <DescriptiveCard
+              image={tv.poster_path}
+              overview={tv.overview}
+              title={tv.name}
+              vote={tv.vote_average}
+              voteCount={tv.vote_average}
+              href={`/tv/${tv.id}`}
+            />
+          ) : (
+            <TvCard tvShow={tv} />
+          )
+        }
+      />
       <ErrorMessage isError={isError} />
     </InfiniteScroll>
   );

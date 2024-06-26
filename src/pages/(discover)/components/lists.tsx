@@ -1,3 +1,4 @@
+import { DescriptiveSkeletonCard } from "@/components/cards/descriptive-card";
 import SkeletonCard from "@/components/cards/skeleton-card";
 import { useShowDescriptiveGrid } from "@/hooks/use-show-descriptive-grid-context";
 import { cn } from "@/lib/utils";
@@ -13,8 +14,9 @@ export function List<T extends { id: number }>({
 
   return (
     <ul
-      className={cn("grid gap-x-4 p-1 gap-y-8 w-full", {
-        "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4": !showDescriptiveGrid,
+      className={cn("grid gap-x-4 p-1 gap-y-12 w-full", {
+        "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-y-8":
+          !showDescriptiveGrid,
       })}
     >
       {items.map((item, index) => (
@@ -33,9 +35,13 @@ export function SkeletonList() {
         "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4": !showDescriptiveGrid,
       })}
     >
-      {[...Array(20)].map((_, index) => (
-        <SkeletonCard key={index} />
-      ))}
+      {[...Array(20)].map((_, index) =>
+        showDescriptiveGrid ? (
+          <DescriptiveSkeletonCard key={index} />
+        ) : (
+          <SkeletonCard key={index} />
+        )
+      )}
     </ul>
   );
 }
