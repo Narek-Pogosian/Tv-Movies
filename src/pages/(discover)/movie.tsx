@@ -1,12 +1,12 @@
 import { EmptyMessage, EndMessage, ErrorMessage } from "./components/messages";
 import { List, SkeletonList } from "./components/lists";
 import { useGetInfiniteQuery } from "@/hooks/use-get-infinite";
+import { useShowDescriptiveGrid } from "@/hooks/use-show-descriptive-grid-context";
 import { api } from "@/lib/api";
 import DiscoverLayout from "./components/discover-layout";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from "./components/loader";
 import MovieCard from "@/components/cards/movie-card";
-import { useShowDescriptiveGrid } from "@/hooks/use-show-descriptive-grid-context";
 import DescriptiveCard from "@/components/cards/descriptive-card";
 
 function Movies() {

@@ -1,11 +1,22 @@
+import { cn } from "@/lib/utils";
 import { Listbox, Transition } from "@headlessui/react";
 import { ChevronsUpDownIcon } from "lucide-react";
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 
 export const Select = Listbox;
 
-export function SelectWrapper({ children }: { children: React.ReactNode }) {
-  return <div className="relative w-full">{children}</div>;
+interface SelectWrapper extends React.HTMLAttributes<HTMLDivElement> {}
+
+export function SelectWrapper({
+  children,
+  className,
+  ...props
+}: SelectWrapper) {
+  return (
+    <div className={cn("relative", className)} {...props}>
+      {children}
+    </div>
+  );
 }
 
 export function SelectButton({
@@ -18,7 +29,7 @@ export function SelectButton({
   return (
     <Listbox.Button
       id={id}
-      className="relative w-full shadow shadow-neutrual-500/10 dark:shadow-[inset_0_1px_1px_1px_#ffffff08] cursor-pointer text-sm font-medium rounded dark:bg-white/5 bg-neutrual-400/5 py-2 pl-3 pr-10 text-left "
+      className="relative w-full border cursor-pointer text-sm font-medium rounded bg-white dark:bg-white/5 py-2 pl-3 pr-10 text-left "
     >
       <span className="block truncate">{children}</span>
       <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
