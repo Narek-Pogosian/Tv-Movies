@@ -14,8 +14,8 @@ function DiscoverLayout({ children }: DiscoverLayoutProps) {
     useShowDescriptiveGrid();
 
   return (
-    <div className="flex flex-col gap-8 py-4 xl:flex-row">
-      <div className="w-full xl:w-fit xl:sticky top-20 h-fit">
+    <div className="flex flex-col gap-8 xl:flex-row">
+      <div className="w-full xl:w-fit xl:sticky top-[76px] h-fit">
         <Filters />
       </div>
       <div className="w-full">
@@ -23,6 +23,7 @@ function DiscoverLayout({ children }: DiscoverLayoutProps) {
           <SortSelect />
           <Toggle
             aria-label="Toggle grid"
+            variant="outline"
             pressed={!showDescriptiveGrid}
             onPressedChange={toggleDescriptiveGrid}
           >

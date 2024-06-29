@@ -22,7 +22,7 @@ function DescriptiveCard({
   backdrop,
 }: CardProps) {
   return (
-    <article className="relative group flex flex-col sm:flex-row rounded has-[:focus-visible]:ring-2 ring-ring ring-offset-2 ring-offset-background">
+    <article className="relative group flex flex-col sm:flex-row rounded has-[:focus-visible]:ring-2 ring-white ring-offset-2 ring-offset-neutral-900">
       <div
         className="relative sm:aspect-[3/4.5] grow-0 shrink-0 sm:w-40 block"
         aria-hidden
@@ -56,7 +56,7 @@ function DescriptiveCard({
         </h3>
         <div className="flex gap-4 mb-4 text-sm">
           <span className="flex items-center gap-1">
-            <Star className="size-4 text-amber-500 fill-current" />
+            <Star className="size-4 text-secondary-500 fill-current" />
             <span className="h-4">{(isNaN(vote) ? 0 : vote).toFixed(1)}</span>
           </span>
           <span className="h-4">{voteCount} votes</span>

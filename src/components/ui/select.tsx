@@ -29,7 +29,7 @@ export function SelectButton({
   return (
     <Listbox.Button
       id={id}
-      className="relative w-full border cursor-pointer text-sm font-medium rounded bg-white dark:bg-white/5 py-2 pl-3 pr-10 text-left "
+      className="relative w-full border cursor-pointer text-sm font-medium rounded bg-white/5 py-2 pl-3 pr-10 text-left "
     >
       <span className="block truncate">{children}</span>
       <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
@@ -50,7 +50,7 @@ export function SelectOptions({ children }: { children: React.ReactNode }) {
       leaveFrom="opacity-100"
       leaveTo="opacity-0"
     >
-      <Listbox.Options className="absolute z-10 mt-1 w-full bg-element shadow-lg rounded-lg p-1.5 text-base focus:outline-none sm:text-sm border">
+      <Listbox.Options className="absolute z-10 mt-1 w-full bg-neutral-900 shadow-lg rounded-lg p-1.5 text-base focus:outline-none sm:text-sm border">
         {children}
       </Listbox.Options>
     </Transition>
@@ -69,18 +69,16 @@ export function SelectOption({
     <Listbox.Option
       value={value}
       className={({ active }) =>
-        `cursor-pointer m-0.5 font-medium rounded ${
-          active ? "dark:bg-white/10 bg-neutral-400/10" : ""
+        `cursor-pointer m-0.5 truncate font-medium rounded ${
+          active ? "bg-white/10 " : ""
         }`
       }
     >
       {({ selected }) => (
         <>
           <span
-            className={`block rounded pointer-events-none py-1.5 pl-4  ${
-              selected
-                ? "bg-black text-white dark:bg-white dark:text-black"
-                : ""
+            className={`block rounded pointer-events-none py-1.5 pl-3 pr-0.5  ${
+              selected ? "bg-white text-black" : ""
             }`}
           >
             {children}

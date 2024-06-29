@@ -4,55 +4,35 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 240 55% 98.5%;
-    --foreground: 240 10% 3.9%;
+html,
+body,
+#root {
+  height: 100%;
+}
 
-    --element: 240 15% 99%;
-    --element-foreground: 240 10% 3.9%;
+html {
+  color-scheme: dark;
+}
 
-    --muted: 240 15% 91.5%;
-    --muted-foreground: 240 3.8% 46.1%;
-
-    --border: 240 15% 94%;
-    --input: 240 15% 90%;
-    --ring: 240 10% 3.9%;
-    --scrollbar: 240 15% 87.5%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    color-scheme: dark;
-
-    --background: 240 10% 5.9%;
-    --foreground: 0 0% 98%;
-
-    --element: 240 10% 8.4%;
-    --element-foreground: 0 0% 98%;
-
-    --muted: 240 10% 13.9%;
-    --muted-foreground: 240 5% 64.9%;
-
-    --border: 240 10% 13.9%;
-    --input: 240 10% 13.9%;
-    --ring: 240 4.9% 83.9%;
-    --scrollbar: 240 12% 18%;
-  }
+body {
+  font-family: "Roboto", sans-serif;
 }
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-neutral-800;
   }
 
   html {
-    @apply scrollbar scrollbar-thumb-scrollbar scrollbar-track-transparent;
+    @apply scrollbar scrollbar-thumb-neutral-700 scrollbar-track-transparent;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-[#0e0e11] text-neutral-50;
+  }
+
+  input {
+    @apply accent-primary-500;
   }
 
   h1 {
@@ -62,24 +42,10 @@
   h2 {
     @apply text-lg lg:text-xl font-semibold mb-2;
   }
-
-  input {
-    @apply accent-rose-500 dark:accent-rose-400;
-  }
 }
 
 @layer components {
   .primary-gradient {
-    @apply bg-gradient-to-r from-rose-500 to-amber-500;
+    @apply bg-gradient-to-r from-primary-500 to-secondary-500;
   }
-}
-
-html,
-body,
-#root {
-  height: 100%;
-}
-
-body {
-  font-family: "Roboto", sans-serif;
 }

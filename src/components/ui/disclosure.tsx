@@ -14,7 +14,7 @@ function MyDisclosure({ buttonText, children, openByDefault }: Props) {
         <>
           <Disclosure.Button
             className={cn(
-              "flex justify-between w-full p-4 bg-element border rounded",
+              "flex justify-between w-full p-4 bg-neutral-900 border rounded",
               { "border-b-transparent rounded-b-none": open }
             )}
           >
@@ -28,7 +28,7 @@ function MyDisclosure({ buttonText, children, openByDefault }: Props) {
               />
             </svg>
           </Disclosure.Button>
-          <Disclosure.Panel className="px-4 pb-4 border rounded-b border-t-transparent bg-element">
+          <Disclosure.Panel className="px-4 pb-4 border rounded-b border-t-transparent bg-neutral-900">
             {children}
           </Disclosure.Panel>
         </>

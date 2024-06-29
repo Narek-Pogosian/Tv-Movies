@@ -24,7 +24,6 @@ const SearchBox = () => {
   });
 
   const navigate = useNavigate();
-  // TODO: Fix click outside issue.
   const handleSelect = (value: SearchResult) => {
     navigate(`/${value.media_type}/${value.id}`);
   };
@@ -35,13 +34,13 @@ const SearchBox = () => {
         type="search"
         autoComplete="off"
         placeholder="Search for movie, tv show or person"
-        className="w-full px-6 py-3 transition-shadow duration-300 font-semibold border rounded-full outline-none focus:ring-ring focus:ring-1 bg-element"
+        className="w-full px-6 py-3 transition-shadow duration-300 bg-neutral-900 font-semibold border rounded-full outline-none focus:ring-white focus:ring-1"
         value={query}
         onChange={(event) => setQuery(event.target.value)}
       />
       {query.trim() && (results || isLoading) && (
         <Combobox.Options
-          className="absolute w-full overflow-y-auto border shadow-md dark:shadow-lg -translate-x-1/2 rounded-lg max-h-80 sm:left-0 sm:translate-x-0 left-1/2 scrollbar-thin bg-element top-14 space-y-1"
+          className="absolute w-full overflow-y-auto border shadow-md dark:shadow-lg -translate-x-1/2 rounded-lg max-h-80 sm:left-0 sm:translate-x-0 bg-neutral-900 left-1/2 scrollbar-thin top-14 space-y-1"
           hold={false}
         >
           {isLoading ? (
@@ -68,7 +67,7 @@ function ComboBoxListItem({ item }: { item: SearchResult }) {
       value={item}
       className={({ active }) =>
         `flex items-center justify-between max-w-full gap-2 cursor-pointer px-4 h-16 ${
-          active ? "bg-black/5 dark:bg-white/5" : ""
+          active ? "bg-white/5" : ""
         }`
       }
     >

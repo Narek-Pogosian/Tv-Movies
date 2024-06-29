@@ -32,14 +32,13 @@ function SortSelect() {
   );
 
   function handleChange(val: string) {
-    setValue(val);
     searchParams.set("sort_by", val);
 
     navigate(`${window.location.pathname}?${searchParams.toString()}`);
   }
 
   return (
-    <SelectWrapper className="w-[220px]">
+    <SelectWrapper className="w-[220px] h-full">
       <label htmlFor="sorting-select" className="sr-only">
         Sort by
       </label>

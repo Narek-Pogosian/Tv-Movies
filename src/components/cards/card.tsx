@@ -6,7 +6,7 @@ interface CardProps extends React.ComponentPropsWithoutRef<"article"> {}
 function Card({ children, ...rest }: CardProps) {
   return (
     <article
-      className="relative group rounded has-[:focus-visible]:ring-2 ring-ring ring-offset-2 ring-offset-background"
+      className="relative group rounded has-[:focus-visible]:ring-2 ring-white ring-offset-2 ring-offset-neutral-900"
       {...rest}
     >
       {children}
@@ -57,7 +57,7 @@ function CardImageInfo({
       <p className="font-bold mb-1.5 line-clamp-2">{title}</p>
       <div className="flex gap-4 mb-4 text-sm">
         <span className="flex items-center gap-1">
-          <Star className="size-4 text-amber-500 fill-current" />
+          <Star className="size-4 text-secondary-500 fill-current" />
           <span className="h-4">{(isNaN(vote) ? 0 : vote).toFixed(1)}</span>
         </span>
         <span className="h-4">{voteCount} votes</span>
@@ -95,7 +95,7 @@ function CardSubInfo({
   return (
     <div className="flex justify-between items-center">
       <span className="flex items-center gap-1">
-        <Star className="size-4 text-amber-500 fill-current" />
+        <Star className="size-4 text-secondary-500 fill-current" />
         <span className="h-4">{(isNaN(rating) ? 0 : rating).toFixed(1)}</span>
       </span>
       <span className="h-4 text-muted-foreground">

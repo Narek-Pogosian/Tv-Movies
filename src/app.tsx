@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="min-h-full flex flex-col">
       <Header />
-      <main className="flex-1 container py-2">
+      <main className="flex-1 container py-4">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/movie" element={<Movies />} />

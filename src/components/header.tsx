@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
-import ThemeToggle from "./theme-toggle";
 
 function Header() {
   return (
-    <header className="sticky inset-0 bg-background z-50">
-      <div className="container flex justify-between items-center py-2.5">
+    <header className="sticky inset-0 bg-[#0e0e11] z-50">
+      <div className="container flex justify-between items-center py-4">
         <nav className="flex gap-6 sm:gap-8 items-center">
           <Link
             to="/"
@@ -33,7 +32,6 @@ function Header() {
             </li>
           </ul>
         </nav>
-        <ThemeToggle />
       </div>
     </header>
   );
