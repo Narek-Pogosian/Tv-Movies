@@ -67,7 +67,7 @@ const DetailsInfo = ({
 
       <div>
         <h1>{title}</h1>
-        <div className="flex gap-2 flex-wrap text-muted-foreground font-semibold text-sm mb-4">
+        <div className="flex gap-2 flex-wrap text-neutral-400 font-semibold text-sm mb-4">
           <span className="flex gap-1 items-center">
             <Star className="size-4 text-secondary-500 fill-current" />
             {voteText}
@@ -113,7 +113,7 @@ export function DetailsInfoContainer({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-6 md:gap-10 lg:gap-20 md:pt-10 md:flex-row pb-14">
+    <div className="flex flex-col gap-6 md:gap-10 lg:gap-20 md:flex-row pb-14">
       {children}
     </div>
   );

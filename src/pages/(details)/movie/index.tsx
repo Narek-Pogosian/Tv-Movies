@@ -17,6 +17,7 @@ function MovieDetails() {
     data: movie,
     error,
     isLoading,
+    isSuccess,
   } = useQuery({
     queryKey: ["movie", id],
     queryFn: () => api.getMovieDetails(id),
@@ -25,7 +26,9 @@ function MovieDetails() {
       videos: data.videos.results.filter((video) => video.type === "Trailer"),
       credits: {
         ...data.credits,
-        cast: removeDuplicates(data.credits.cast),
+        cast: removeDuplicates(data.credits.cast).sort(
+          (a, b) => b.popularity - a.popularity
+        ),
       },
     }),
   });
@@ -34,45 +37,46 @@ function MovieDetails() {
     return <ErrorPage />;
   }
 
-  return (
-    <>
-      {isLoading ? (
+  if (isLoading) {
+    return (
+      <>
         <DetailsInfoSkeletonShell />
-      ) : (
-        movie && (
-          <DetailsInfo
-            crew={movie.credits.crew}
-            genres={movie.genres}
-            poster={movie.poster_path}
-            backdrop={movie.backdrop_path}
-            overview={movie.overview}
-            release={movie.release_date}
-            title={movie.title}
-            trailer={movie.videos[0]}
-            vote={movie.vote_average}
-            voteCount={movie.vote_count}
-          />
-        )
-      )}
-      <RowList
-        title="Cast"
-        items={movie?.credits.cast
-          .sort((a, b) => b.popularity - a.popularity)
-          .slice(0, 15)}
-        isLoading={isLoading}
-        isError={!!error}
-        isPerson
-        render={(person) => (
-          <PersonCard
-            id={person.id}
-            image={person.profile_path}
-            name={person.name}
-            character={person.character}
-          />
-        )}
-      />
-    </>
-  );
+        <RowList title="m" isLoading items={[]} isPerson render={() => <></>} />
+      </>
+    );
+  }
+
+  if (isSuccess) {
+    return (
+      <>
+        <DetailsInfo
+          crew={movie.credits.crew}
+          genres={movie.genres}
+          poster={movie.poster_path}
+          backdrop={movie.backdrop_path}
+          overview={movie.overview}
+          release={movie.release_date}
+          title={movie.title}
+          trailer={movie.videos[0]}
+          vote={movie.vote_average}
+          voteCount={movie.vote_count}
+        />
+        <RowList
+          title="Cast"
+          items={movie?.credits.cast}
+          isPerson
+          render={(person) => (
+            <PersonCard
+              id={person.id}
+              image={person.profile_path}
+              name={person.name}
+              character={person.character}
+            />
+          )}
+        />
+      </>
+    );
+  }
 }
 
 export default MovieDetails;

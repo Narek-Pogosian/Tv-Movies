@@ -15,7 +15,7 @@ function DiscoverLayout({ children }: DiscoverLayoutProps) {
 
   return (
     <div className="flex flex-col gap-8 xl:flex-row">
-      <div className="w-full xl:w-fit xl:sticky top-[76px] h-fit">
+      <div className="w-full xl:w-fit xl:sticky top-[92px] h-fit">
         <Filters />
       </div>
       <div className="w-full">

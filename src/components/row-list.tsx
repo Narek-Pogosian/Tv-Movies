@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { useState } from "react";
-import SkeletonCard from "./cards/skeleton-card";
 import { Skeleton } from "./ui/skeleton";
+import SkeletonCard from "./cards/skeleton-card";
 
 interface RowListProps<T> {
   items: T[] | undefined;
@@ -48,6 +48,17 @@ function RowList<T extends { id: number }>({
     );
   }
 
+  if (items?.length === 0) {
+    return (
+      <>
+        {title && <h2>{title}</h2>}
+        <ScrollListContainer>
+          <p className="pt-10 font-semibold">Nothing to see here</p>
+        </ScrollListContainer>
+      </>
+    );
+  }
+
   return (
     <>
       {title && <h2>{title}</h2>}
@@ -68,7 +79,6 @@ function ScrollListContainer({ children }: { children: React.ReactNode }) {
   return <div className="relative h-[352px] md:h-[368px]">{children}</div>;
 }
 
-// TODO: Optimize this function with a debounce or throttle. Maybe change to event listener.
 function SideScrollList({ children }: { children: React.ReactNode }) {
   const [isAtEnd, setIsAtEnd] = useState(false);
   const [isAtStart, setIsAtStart] = useState(true);

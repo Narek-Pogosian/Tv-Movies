@@ -17,6 +17,7 @@ function TvShowDetails() {
     data: tvShow,
     error,
     isLoading,
+    isSuccess,
   } = useQuery({
     queryKey: ["tv", id],
     queryFn: () => api.getTvDetails(id),
@@ -34,45 +35,50 @@ function TvShowDetails() {
     return <ErrorPage />;
   }
 
-  return (
-    <>
-      {isLoading ? (
+  if (isLoading) {
+    return (
+      <>
         <DetailsInfoSkeletonShell />
-      ) : (
-        tvShow && (
-          <DetailsInfo
-            crew={tvShow.credits.crew}
-            genres={tvShow.genres}
-            poster={tvShow.poster_path}
-            backdrop={tvShow.backdrop_path}
-            overview={tvShow.overview}
-            release={tvShow.first_air_date}
-            title={tvShow.name}
-            trailer={tvShow.videos[0]}
-            vote={tvShow.vote_average}
-            voteCount={tvShow.vote_count}
-          />
-        )
-      )}
-      <RowList
-        title="Cast"
-        items={tvShow?.credits.cast
-          .sort((a, b) => b.popularity - a.popularity)
-          .slice(0, 15)}
-        isLoading={isLoading}
-        isError={!!error}
-        isPerson
-        render={(person) => (
-          <PersonCard
-            id={person.id}
-            image={person.profile_path}
-            name={person.name}
-            character={person.character}
-          />
-        )}
-      />
-    </>
-  );
+        <RowList title="t" isLoading items={[]} isPerson render={() => <></>} />
+      </>
+    );
+  }
+
+  if (isSuccess) {
+    return (
+      <>
+        <DetailsInfo
+          crew={tvShow.credits.crew}
+          genres={tvShow.genres}
+          poster={tvShow.poster_path}
+          backdrop={tvShow.backdrop_path}
+          overview={tvShow.overview}
+          release={tvShow.first_air_date}
+          title={tvShow.name}
+          trailer={tvShow.videos[0]}
+          vote={tvShow.vote_average}
+          voteCount={tvShow.vote_count}
+        />
+        <RowList
+          title="Cast"
+          items={tvShow?.credits.cast.sort(
+            (a, b) => b.popularity - a.popularity
+          )}
+          isLoading={isLoading}
+          isError={!!error}
+          isPerson
+          render={(person) => (
+            <PersonCard
+              id={person.id}
+              image={person.profile_path}
+              name={person.name}
+              character={person.character}
+            />
+          )}
+        />
+      </>
+    );
+  }
 }
 
 export default TvShowDetails;

@@ -28,19 +28,19 @@ function PersonDetailsInfo({ person }: PersonDetailsInfoProps) {
         <div className="flex flex-wrap gap-6 mb-6">
           <div>
             <h5 className="font-semibold">Known For</h5>
-            <span className="text-sm text-muted-foreground">
+            <span className="text-sm text-neutral-400">
               {person.known_for_department}
             </span>
           </div>
           <div>
             <h5 className="font-semibold">Birthday</h5>
-            <span className="text-sm text-muted-foreground">
+            <span className="text-sm text-neutral-400">
               {new Date(person.birthday).toLocaleDateString()}
             </span>
           </div>
           <div>
             <h5 className="font-semibold">Place of Birth</h5>
-            <span className="text-sm text-muted-foreground">
+            <span className="text-sm text-neutral-400">
               {person.place_of_birth}
             </span>
           </div>
@@ -59,7 +59,7 @@ export function PersonDetailsContainer({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-6 lg:gap-20 sm:pt-10 sm:flex-row pb-14 w-full">
+    <div className="flex flex-col gap-6 lg:gap-20 sm:flex-row pb-14 w-full">
       {children}
     </div>
   );

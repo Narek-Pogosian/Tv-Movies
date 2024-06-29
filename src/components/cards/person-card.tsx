@@ -14,11 +14,8 @@ function PersonCard({ id, image, name, character }: PersonCardProps) {
       <Card.Info>
         <Card.Title title={name} href={`/person/${id}`} />
         {character && (
-          <p
-            className="text-muted-foreground !font-base truncate"
-            title={character}
-          >
-            as {character}
+          <p className="text-neutral-300 !font-base truncate" title={character}>
+            <span className="text-xs text-neutral-400">as {character}</span>
           </p>
         )}
       </Card.Info>

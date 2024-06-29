@@ -61,7 +61,7 @@ function DescriptiveCard({
           </span>
           <span className="h-4">{voteCount} votes</span>
         </div>
-        <p className="text-muted-foreground line-clamp-5">{overview}</p>
+        <p className="text-neutral-400 line-clamp-5">{overview}</p>
       </div>
     </article>
   );

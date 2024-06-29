@@ -17,6 +17,7 @@ function PersonDetails() {
     data: person,
     error,
     isLoading,
+    isSuccess,
   } = useQuery({
     queryKey: ["person", id],
     queryFn: () => api.getPersonDetails(id),
@@ -39,39 +40,46 @@ function PersonDetails() {
     return <ErrorPage />;
   }
 
-  return (
-    <>
-      {isLoading ? (
+  if (isLoading) {
+    return (
+      <>
         <PersonDetailsSkeletonShell />
-      ) : (
-        person && <PersonDetailsInfo person={person} />
-      )}
-      <RowList
-        title="Feautured in"
-        items={person?.credits}
-        isLoading={isLoading}
-        isError={!!error}
-        render={(item) => (
-          <Card>
-            <Card.Image
-              image={item.poster_path}
-              title={item.name ?? item.title ?? ""}
-            />
-            <Card.Info>
-              <Card.Title
+        <RowList title="p" isLoading items={[]} isPerson render={() => <></>} />
+      </>
+    );
+  }
+
+  if (isSuccess) {
+    return (
+      <>
+        <PersonDetailsInfo person={person} />
+        <RowList
+          title="Feautured in"
+          items={person?.credits}
+          isLoading={isLoading}
+          isError={!!error}
+          render={(item) => (
+            <Card>
+              <Card.Image
+                image={item.poster_path}
                 title={item.name ?? item.title ?? ""}
-                href={`/${item.media_type}/${item.id}`}
               />
-              <Card.SubInfo
-                rating={item.vote_average}
-                releaseDate={item.release_date ?? item.first_air_date ?? ""}
-              ></Card.SubInfo>
-            </Card.Info>
-          </Card>
-        )}
-      />
-    </>
-  );
+              <Card.Info>
+                <Card.Title
+                  title={item.name ?? item.title ?? ""}
+                  href={`/${item.media_type}/${item.id}`}
+                />
+                <Card.SubInfo
+                  rating={item.vote_average}
+                  releaseDate={item.release_date ?? item.first_air_date ?? ""}
+                ></Card.SubInfo>
+              </Card.Info>
+            </Card>
+          )}
+        />
+      </>
+    );
+  }
 }
 
 export default PersonDetails;

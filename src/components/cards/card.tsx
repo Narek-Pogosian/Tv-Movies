@@ -98,7 +98,7 @@ function CardSubInfo({
         <Star className="size-4 text-secondary-500 fill-current" />
         <span className="h-4">{(isNaN(rating) ? 0 : rating).toFixed(1)}</span>
       </span>
-      <span className="h-4 text-muted-foreground">
+      <span className="h-4 text-neutral-400">
         {new Date(releaseDate).getFullYear()}
       </span>
     </div>
