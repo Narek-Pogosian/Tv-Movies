@@ -10,7 +10,7 @@ import {
   SelectWrapper,
 } from "@/components/ui/select";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 function SortSelect() {
   const { pathname } = useLocation();
@@ -21,9 +21,15 @@ function SortSelect() {
     searchParams.get("sort_by") ?? "popularity.desc"
   );
 
-  const sortOptions = pathname.includes("movie")
-    ? sortOptionsForMovies
-    : sortOptionsForTv;
+  useEffect(() => {
+    setValue(searchParams.get("sort_by") ?? "popularity.desc");
+  }, [searchParams]);
+
+  const sortOptions = useMemo(
+    () =>
+      pathname.includes("movie") ? sortOptionsForMovies : sortOptionsForTv,
+    [pathname]
+  );
 
   function handleChange(val: string) {
     setValue(val);

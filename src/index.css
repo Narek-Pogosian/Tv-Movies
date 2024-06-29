@@ -6,10 +6,10 @@
 
 @layer base {
   :root {
-    --background: 240 15% 96.4%;
+    --background: 240 55% 98.5%;
     --foreground: 240 10% 3.9%;
 
-    --element: 240 15% 98.5%;
+    --element: 240 15% 99%;
     --element-foreground: 240 10% 3.9%;
 
     --muted: 240 15% 91.5%;
