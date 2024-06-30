@@ -6,7 +6,7 @@ import TrendingMovies from "./components/trending-movies";
 function HomePage() {
   return (
     <>
-      <div className="text-center font-bold py-6 mb-8">
+      <div className="text-center font-bold mb-16">
         <h1 className="mb-4 text-center md:text-left">
           <span className="lg:text-5xl text-4xl font-bold primary-gradient text-transparent bg-clip-text">
             Welcome.

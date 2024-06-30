@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <header className="sticky inset-0 bg-[#0e0e11] z-50">
+    <header className="sticky inset-0 bg-neutral-950 z-50">
       <div className="container flex justify-between items-center py-4">
         <nav className="flex gap-6 sm:gap-8 items-center">
           <Link

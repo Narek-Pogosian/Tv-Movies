@@ -28,7 +28,7 @@ body {
   }
 
   body {
-    @apply bg-[#0e0e11] text-neutral-50;
+    @apply bg-neutral-950 text-neutral-50;
   }
 
   input {

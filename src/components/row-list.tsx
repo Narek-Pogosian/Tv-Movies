@@ -99,14 +99,14 @@ function SideScrollList({ children }: { children: React.ReactNode }) {
       >
         <div
           className={cn(
-            "dark:md:w-28 opacity-100 transition-opacity duration-500 w-16 bg-gradient-to-r to-transparent from-background h-[calc(100%-22px)] absolute top-0 -left-1 z-10 pointer-events-none",
+            "dark:md:w-28 opacity-100 transition-opacity duration-500 w-16 bg-gradient-to-r to-transparent from-neutral-950 h-[calc(100%-22px)] absolute top-0 -left-1 z-10 pointer-events-none",
             { "opacity-0": isAtStart }
           )}
         />
         {children}
         <div
           className={cn(
-            "dark:md:w-28 opacity-100 transition-opacity duration-500 w-16 bg-gradient-to-r from-transparent to-background h-[calc(100%-22px)] absolute top-0 -right-1 z-10 pointer-events-none",
+            "dark:md:w-28 opacity-100 transition-opacity duration-500 w-16 bg-gradient-to-r from-transparent to-neutral-950 h-[calc(100%-22px)] absolute top-0 -right-1 z-10 pointer-events-none",
             {
               "opacity-0": isAtEnd,
             }
