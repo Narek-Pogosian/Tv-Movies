@@ -25,11 +25,17 @@ const SearchBox = () => {
 
   const navigate = useNavigate();
   const handleSelect = (value: SearchResult) => {
-    navigate(`/${value.media_type}/${value.id}`);
+    if (value) navigate(`/${value.media_type}/${value.id}`);
   };
 
   return (
-    <Combobox as="div" className="relative z-30" onChange={handleSelect}>
+    <Combobox
+      as="div"
+      className="relative z-30"
+      onChange={handleSelect}
+      defaultValue={null}
+      nullable
+    >
       <Combobox.Input
         type="search"
         autoComplete="off"

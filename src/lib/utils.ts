@@ -41,7 +41,7 @@ export function sortAndFilterByVoteAverage<
 export function setSearchQueries(
   values: Record<string, null | string | number | Array<number>>
 ) {
-  const searchParams = new URLSearchParams();
+  const searchParams = new URLSearchParams(window.location.search);
 
   Object.entries(values).forEach(([key, value]) => {
     if (!value) {
@@ -56,6 +56,7 @@ export function setSearchQueries(
       searchParams.set(key, value.toString());
     }
   });
+  console.log(searchParams.toString());
 
   return `${window.location.pathname}?${searchParams.toString()}`;
 }
